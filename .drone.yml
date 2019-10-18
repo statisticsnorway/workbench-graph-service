@@ -1,0 +1,87 @@
+kind: pipeline
+name: workbench-graph-service
+
+steps:
+  - name: install-and-test
+    image: node:current-alpine
+    commands:
+      - yarn install
+      - CI=true yarn coverage
+    when:
+      event:
+        - pull_request
+        - push
+
+  - name: code-analysis
+    image: aosapps/drone-sonar-plugin
+    settings:
+      sonar_host: https://sonarqube.prod-bip-ci.ssb.no
+#        from_secret: sonar_host -- Not implemented yet
+      sonar_token:
+        from_secret: sonar_token
+    when:
+      event:
+        - pull_request
+        - push
+
+  - name: publish-docker
+    image: plugins/gcr
+    settings:
+      repo: prod-bip/workbench-graph-service
+      registry: eu.gcr.io
+      tags: "${DRONE_BRANCH}-${DRONE_COMMIT_SHA:0:8}"
+      json_key:
+        from_secret: gcr_credentials
+    when:
+      branch:
+        - develop
+      event:
+        - push
+
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook:
+        from_secret: slack_webhook_url
+#      channel: bip-ci-test -- Choosing channel is not enabled yet
+      template: >
+        {{#success build.status}}
+          *Success*! {{uppercasefirst build.event}} - {{build.link}}. Good job *{{build.author}}*!
+        {{else}}
+          *Failure*! {{uppercasefirst build.event}} - {{build.link}}. Your fault *{{build.author}}*!
+        {{/success}}
+    when:
+      status: [ success, failure ]
+
+trigger:
+  ref:
+    - refs/heads/develop
+    - refs/pull/*/head
+
+---
+kind: secret
+name: sonar_host
+get:
+  path: drone-sonarqube-configuration
+  name: url
+
+---
+kind: secret
+name: sonar_token
+get:
+  path: drone-sonarqube-configuration
+  name: token
+
+---
+kind: secret
+name: gcr_credentials
+get:
+  path: drone-gcr-credentials
+  name: gcr-credentials
+
+---
+kind: secret
+name: slack_webhook_url
+get:
+  path: drone-slack-webhook-url
+  name: slack-webhook-url

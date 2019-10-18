@@ -1,0 +1,220 @@
+{
+  "statisticalProgramCycles": [
+    {
+      "id": "8560b6c5-87ec-45df-b320-d1196c9573de",
+      "name": [
+        {
+          "languageText": "Statistical Program Cycle example"
+        }
+      ],
+      "description": null,
+      "businessProcesses": [
+        {
+          "id": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
+          "name": [
+            {
+              "languageText": "Business Process example"
+            }
+          ],
+          "description": null,
+          "previousBusinessProcess": {
+            "id": "dad379da-475c-44ac-98d7-56307c10a53c",
+            "name": [
+              {
+                "languageText": "Business Process dependency example"
+              }
+            ],
+            "description": null,
+            "processSteps": [
+              {
+                "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+                "name": [
+                  {
+                    "languageText": "Process Step example"
+                  }
+                ],
+                "technicalPackageID": "2ERNUDMGB",
+                "codeBlocks": [
+                  {
+                    "codeBlockIndex": 1,
+                    "codeBlockTitle": "First doc",
+                    "codeBlockType": "DOCUMENTATION",
+                    "codeBlockValue": "%md\n# Process beskrivelse\nHer beskriver du hva det er dette process steget skal gjøre\n\n## Input\n- Lag en liste over de inputer som skal ingå i dette steget\n\n## Output\n- Lad en liste over de resultater som forventes av steget",
+                    "processStepInstance": null
+                  },
+                  {
+                    "codeBlockIndex": 2,
+                    "codeBlockTitle": "First code",
+                    "codeBlockType": "CODE",
+                    "codeBlockValue": "%pyspark # Oppgi hvilket språk du skriver i\n\n# Første paragraf skal inneholde de bibliotekene som skal benyttes i dette process steget\nfrom pyspark.sql import SparkSession \nfrom pyspark.sql.types import *\nimport pyspark.sql.functions as F\nfrom pyspark.sql import SQLContext\nfrom pyspark.sql.functions import broadcast",
+                    "processStepInstance": {
+                      "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                      "transformableInputs": {
+                        "edges": [
+                          {
+                            "node": {
+                              "inputId": {
+                                "__typename": "UnitDataSet"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "processExecutionCode": "%pyspark\r\n#Importer alle datasett du skal bruke i dette process steget\r\ndf = spark.read.load('gs://somedata/data/auto.parquet')\r\ndf2 = spark.read.load('gsim-link')",
+                      "processExecutionLog": {
+                        "logMessage": "A boat with caught fish!"
+                      },
+                      "transformedOutputs": {
+                        "edges": [
+                          {
+                            "node": {
+                              "id": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "codeBlockIndex": 3,
+                    "codeBlockTitle": "Second code",
+                    "codeBlockType": "CODE",
+                    "codeBlockValue": "%pyspark\n#==== Initiate Spark Session ====#\nspark = (SparkSession.builder.appName(\"Test_case\")\\\n                    .config(\"spark.executor.memory\", \"12g\")\\\n                    .config(\"spark.executor.cores\", 6)\\\n                    .config('spark.dynamicAllocation.maxExecutors', '6')\\\n                    .getOrCreate())\n                    \na = 0.25",
+                    "processStepInstance": {
+                      "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                      "transformableInputs": {
+                        "edges": [
+                          {
+                            "node": {
+                              "inputId": {
+                                "__typename": "UnitDataSet"
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "processExecutionCode": "%pyspark\r\n#Importer alle datasett du skal bruke i dette process steget\r\ndf = spark.read.load('gs://somedata/data/auto.parquet')\r\ndf2 = spark.read.load('gsim-link')",
+                      "processExecutionLog": {
+                        "logMessage": "A boat with caught fish!"
+                      },
+                      "transformedOutputs": {
+                        "edges": [
+                          {
+                            "node": {
+                              "id": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "codeBlockIndex": 4,
+                    "codeBlockTitle": "Second doc",
+                    "codeBlockType": "DOCUMENTATION",
+                    "codeBlockValue": "%md\n### Sub-steg titel\n\nEt process steg består av mange forskjellige underoppgaver.\nI dette avsnittet ønsker vi at du skriver inn en beskrivelse av det neste steget.\nDet skal være en tekst paragraph (%md) før hver kode blok som skrives.",
+                    "processStepInstance": null
+                  }
+                ]
+              }
+            ]
+          },
+          "processSteps": [
+            {
+              "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+              "name": [
+                {
+                  "languageText": "Process Step example"
+                }
+              ],
+              "description": null,
+              "technicalPackageID": "2ERNUDMGB",
+              "codeBlocks": [
+                {
+                  "codeBlockIndex": 1,
+                  "codeBlockTitle": "First doc",
+                  "codeBlockType": "DOCUMENTATION",
+                  "codeBlockValue": "%md\n# Process beskrivelse\nHer beskriver du hva det er dette process steget skal gjøre\n\n## Input\n- Lag en liste over de inputer som skal ingå i dette steget\n\n## Output\n- Lad en liste over de resultater som forventes av steget",
+                  "processStepInstance": null
+                },
+                {
+                  "codeBlockIndex": 2,
+                  "codeBlockTitle": "First code",
+                  "codeBlockType": "CODE",
+                  "codeBlockValue": "%pyspark # Oppgi hvilket språk du skriver i\n\n# Første paragraf skal inneholde de bibliotekene som skal benyttes i dette process steget\nfrom pyspark.sql import SparkSession \nfrom pyspark.sql.types import *\nimport pyspark.sql.functions as F\nfrom pyspark.sql import SQLContext\nfrom pyspark.sql.functions import broadcast",
+                  "processStepInstance": {
+                    "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                    "transformableInputs": {
+                      "edges": [
+                        {
+                          "node": {
+                            "inputId": {
+                              "__typename": "UnitDataSet"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "processExecutionCode": "%pyspark\r\n#Importer alle datasett du skal bruke i dette process steget\r\ndf = spark.read.load('gs://somedata/data/auto.parquet')\r\ndf2 = spark.read.load('gsim-link')",
+                    "processExecutionLog": {
+                      "logMessage": "A boat with caught fish!"
+                    },
+                    "transformedOutputs": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "codeBlockIndex": 3,
+                  "codeBlockTitle": "Second code",
+                  "codeBlockType": "CODE",
+                  "codeBlockValue": "%pyspark\n#==== Initiate Spark Session ====#\nspark = (SparkSession.builder.appName(\"Test_case\")\\\n                    .config(\"spark.executor.memory\", \"12g\")\\\n                    .config(\"spark.executor.cores\", 6)\\\n                    .config('spark.dynamicAllocation.maxExecutors', '6')\\\n                    .getOrCreate())\n                    \na = 0.25",
+                  "processStepInstance": {
+                    "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                    "transformableInputs": {
+                      "edges": [
+                        {
+                          "node": {
+                            "inputId": {
+                              "__typename": "UnitDataSet"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "processExecutionCode": "%pyspark\r\n#Importer alle datasett du skal bruke i dette process steget\r\ndf = spark.read.load('gs://somedata/data/auto.parquet')\r\ndf2 = spark.read.load('gsim-link')",
+                    "processExecutionLog": {
+                      "logMessage": "A boat with caught fish!"
+                    },
+                    "transformedOutputs": {
+                      "edges": [
+                        {
+                          "node": {
+                            "id": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "codeBlockIndex": 4,
+                  "codeBlockTitle": "Second doc",
+                  "codeBlockType": "DOCUMENTATION",
+                  "codeBlockValue": "%md\n### Sub-steg titel\n\nEt process steg består av mange forskjellige underoppgaver.\nI dette avsnittet ønsker vi at du skriver inn en beskrivelse av det neste steget.\nDet skal være en tekst paragraph (%md) før hver kode blok som skrives.",
+                  "processStepInstance": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

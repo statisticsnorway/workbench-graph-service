@@ -1,0 +1,52 @@
+{
+  "name": "workbench-graph-service",
+  "version": "1.0.0",
+  "description": "A service that converts data model dependency graphs into a dot file for use with Graphviz and other visualizers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "./node_modules/.bin/dotenv -e .env nodemon start",
+    "test": "jest test --verbose=false --watchAll=true",
+    "coverage": "jest test --coverage --watchAll=false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/statisticsnorway/workbench-graph-service"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/statisticsnorway/workbench-graph-service/issues"
+  },
+  "homepage": "https://github.com/statisticsnorway/workbench-graph-service#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-request-id": "^1.4.1",
+    "express-validator": "^6.2.0",
+    "graphql": "^14.5.8",
+    "graphql-tag": "^2.10.1",
+    "http": "^0.0.0",
+    "humanize-graphql-response": "^1.0.0",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^2.0.0",
+    "jest": "^24.9.0",
+    "moxios": "^0.4.0",
+    "nodemon": "^1.18.11",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 73,
+        "functions": 91,
+        "lines": 92,
+        "statements": 92
+      }
+    }
+  }
+}
