@@ -8,6 +8,7 @@ const humanizeGraphQLResponse = require('humanize-graphql-response')
 
 module.exports = function () {
 
+  /* istanbul ignore next */
   const getUrl = (lds) => {
     switch (lds) {
       default:
@@ -20,6 +21,7 @@ module.exports = function () {
     }
   }
 
+  /* istanbul ignore next */
   function handleError (res) {
     return (error) => {
       if (error instanceof Error) {
