@@ -2,7 +2,7 @@
 const http = require('http');
 const app = require('./src/app');
 
-const port = parseInt(process.env.PORT, 10) || 8005;
+const port = parseInt(process.env.PORT, 10) || 8000;
 app.set('port', port);
 
 const server = http.createServer(app);

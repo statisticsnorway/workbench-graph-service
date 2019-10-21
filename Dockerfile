@@ -11,6 +11,6 @@ COPY src ./src
 COPY docker-entrypoint.sh .
 COPY index.js .
 
-EXPOSE 8005
+EXPOSE 8000
 
 ENTRYPOINT ["sh", "./docker-entrypoint.sh"]
