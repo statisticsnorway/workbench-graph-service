@@ -19,12 +19,10 @@ module.exports = function () {
         return properties.api.ldsC
     }
   }
-  let url = properties.api.lds
 
   function handleError (res) {
     return (error) => {
       if (error instanceof Error) {
-        console.debug('An error has occured: ', error)
         if (error.response && error.response.data) {
           res.status(error.response.status).send(error.response.data.message)
         } else if (error.response) {
@@ -46,7 +44,11 @@ module.exports = function () {
         variables: { id: req.id }
       })
         .then((response) => {
-          res.status(response.status).send(humanizeGraphQLResponse(response.data))
+          if (response.data.data) {
+            res.status(response.status).send(humanizeGraphQLResponse(response.data.data))
+          } else {
+            res.status(404).send('Data not found for: ' + req.id)
+          }
         })
         .catch(handleError(res))
     },
