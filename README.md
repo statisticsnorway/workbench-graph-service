@@ -1,4 +1,6 @@
 # workbench-graph-service
+[![Build Status](https://drone.prod-bip-ci.ssb.no/api/badges/statisticsnorway/workbench-graph-service/status.svg)](https://drone.prod-bip-ci.ssb.no/statisticsnorway/workbench-graph-service)
+
 A service that converts data model dependency graphs into a dot file for use with Graphviz and other visualizers
 
 ## Getting started
