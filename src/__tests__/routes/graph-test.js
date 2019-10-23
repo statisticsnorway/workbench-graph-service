@@ -23,7 +23,7 @@ describe('Test /api/graph endpoints', () => {
   test('It should return a graph of statistical program dummy example', async () => {
     moxios.stubRequest('http://mock/graphql', {
       status: 200,
-      response: {data: statisticalProgramExample}
+      response: statisticalProgramExample
     })
     await request(app).get('/api/graph/statisticalProgram/dummyId').expect(200, statisticalProgramExampleGraph)
   })
@@ -31,7 +31,7 @@ describe('Test /api/graph endpoints', () => {
   test('It should return a graph of statistical program tax example', async () => {
     moxios.stubRequest('http://mock/graphql', {
       status: 200,
-      response: {data: statisticalProgramSkatt}
+      response: statisticalProgramSkatt
     })
     await request(app).get('/api/graph/statisticalProgram/dummyId').expect(200, statisticalProgramSkattGraph)
   })

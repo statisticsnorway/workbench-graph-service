@@ -54,7 +54,7 @@ module.exports = function () {
   }
 
   function mapProcessGraph (model) {
-    const obj = humanizeGraphQLResponse(model).data.StatisticalProgramById.statisticalProgramCycles[0]
+    const obj = humanizeGraphQLResponse(model).StatisticalProgramById.statisticalProgramCycles[0]
     let result = { nodes: [], edges: [] }
     addToResult(null, obj, result, nodeType.BUSINESS_PROCESS)
     return result
