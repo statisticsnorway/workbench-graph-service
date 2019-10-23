@@ -27,6 +27,14 @@ module.exports = function () {
     }
   }
 
+  // Get the authorization header from the request and use this for get authorized access to LDS
+  function getHeaders(req) {
+    return {
+      "authorization": req.headers["authorization"] || "",
+    };
+  }
+
+
   /* istanbul ignore next */
   function handleError (res) {
     return (error) => {
@@ -127,7 +135,7 @@ module.exports = function () {
       return post(url + 'graphql', {
         query: graphqlPrinter(getStatisticalProgramById),
         variables: { id: req.id }
-      })
+      }, {headers: getHeaders(req)})
         .then((response) => {
           if (response.data.data) {
             res.status(response.status).send(mapProcessGraph(response.data.data))

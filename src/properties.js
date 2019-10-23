@@ -18,9 +18,9 @@ const development = {
 
 const staging_bip = {
   api: {
-    ldsA: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-a/",
-    ldsB: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-b/",
-    ldsC: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-c/"
+    ldsA: "http://lds-postgres-gsim.linked-data-store/",
+    ldsB: "http://lds-b-postgres-gsim.linked-data-store/",
+    ldsC: "http://lds-c-postgres-gsim.linked-data-store/"
   }
 };
 
