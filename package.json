@@ -29,7 +29,6 @@
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "http": "^0.0.0",
-    "humanize-graphql-response": "^1.0.0",
     "morgan": "^1.9.1"
   },
   "devDependencies": {

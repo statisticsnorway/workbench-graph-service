@@ -1793,11 +1793,6 @@ http@^0.0.0:
   resolved "https://registry.yarnpkg.com/http/-/http-0.0.0.tgz#86e6326d29c5d039de9fac584a45689f929f4f72"
   integrity sha1-huYybSnF0Dnen6xYSkVon5KfT3I=
 
-humanize-graphql-response@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/humanize-graphql-response/-/humanize-graphql-response-1.0.0.tgz#b67544b6759ba73f247baaccab6eba3e2bbd0283"
-  integrity sha512-SzzZmrz3T5Ir8fWYaecX3y0AQJSvPA/6L5ju8MEuxlYQKr+lLfHsLaK5iA16nUDAt+lcQIhBeOpX7r4ejIh7Fg==
-
 iconv-lite@0.4.24, iconv-lite@^0.4.4:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
