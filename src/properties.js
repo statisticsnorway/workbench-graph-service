@@ -18,9 +18,9 @@ const development = {
 
 const staging_bip = {
   api: {
-    ldsA: "https://workbench.staging-bip-app.ssb.no/be/lds-a/",
-    ldsB: "https://workbench.staging-bip-app.ssb.no/be/lds-b/",
-    ldsC: "https://workbench.staging-bip-app.ssb.no/be/lds-c/"
+    ldsA: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-a/",
+    ldsB: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-b/",
+    ldsC: "https://workbench-graph-service.staging-bip-app.ssb.no/be/lds-c/"
   }
 };
 
