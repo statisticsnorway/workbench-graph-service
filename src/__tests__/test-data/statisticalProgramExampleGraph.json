@@ -1,0 +1,110 @@
+{
+  "edges": [
+    {
+      "from": "8560b6c5-87ec-45df-b320-d1196c9573de",
+      "to": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f"
+    },
+    {
+      "from": "dad379da-475c-44ac-98d7-56307c10a53c",
+      "to": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f"
+    },
+    {
+      "from": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c82"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c821"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c822"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c822",
+      "to": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+    },
+    {
+      "from": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c822"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c823"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c823",
+      "to": "b2cb6c85-995a-498e-a988-178daf5b98aa"
+    },
+    {
+      "from": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c823"
+    },
+    {
+      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c824"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "8560b6c5-87ec-45df-b320-d1196c9573de",
+      "label": "Statistical Program Cycle example",
+      "type": "BusinessProcess"
+    },
+    {
+      "id": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
+      "label": "Business Process example",
+      "type": "BusinessProcess"
+    },
+    {
+      "id": "dad379da-475c-44ac-98d7-56307c10a53c",
+      "label": "Business Process dependency example",
+      "type": "BusinessProcess"
+    },
+    {
+      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+      "label": "Process Step example",
+      "type": "ProcessStep"
+    },
+    {
+      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c821",
+      "label": "First doc",
+      "type": "CodeBlock"
+    },
+    {
+      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c822",
+      "label": "First code",
+      "type": "CodeBlock"
+    },
+    {
+      "id": "b2cb6c85-995a-498e-a988-178daf5b98aa",
+      "label": "Transformed output example",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+      "label": "Transformable input example",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c823",
+      "label": "Second code",
+      "type": "CodeBlock"
+    },
+    {
+      "id": "b2cb6c85-995a-498e-a988-178daf5b98aa",
+      "label": "Transformed output example",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+      "label": "Transformable input example",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c824",
+      "label": "Second doc",
+      "type": "CodeBlock"
+    }
+  ]
+}

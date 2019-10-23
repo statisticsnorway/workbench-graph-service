@@ -1,0 +1,202 @@
+{
+  "data": {
+    "StatisticalProgramById": {
+      "name": [
+        {
+          "languageCode": "en",
+          "languageText": "Statistical Program example"
+        }
+      ],
+      "statisticalProgramCycles": {
+        "edges": [
+          {
+            "node": {
+              "id": "8560b6c5-87ec-45df-b320-d1196c9573de",
+              "name": [
+                {
+                  "languageCode": "en",
+                  "languageText": "Statistical Program Cycle example"
+                }
+              ],
+              "description": null,
+              "businessProcesses": {
+                "edges": [
+                  {
+                    "node": {
+                      "id": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
+                      "name": [
+                        {
+                          "languageCode": "en",
+                          "languageText": "Business Process example"
+                        }
+                      ],
+                      "description": null,
+                      "previousBusinessProcess": {
+                        "id": "dad379da-475c-44ac-98d7-56307c10a53c",
+                        "name": [
+                          {
+                            "languageCode": "en",
+                            "languageText": "Business Process dependency example"
+                          }
+                        ],
+                        "description": null,
+                        "processSteps": {
+                          "edges": [
+                            {
+                              "node": {
+                                "id": "ecd92c16-8119-4106-bc65-70dcc858d1cc",
+                                "name": [
+                                  {
+                                    "languageCode": "en",
+                                    "languageText": "Process Step dependency example"
+                                  }
+                                ],
+                                "technicalPackageID": null,
+                                "codeBlocks": null
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "processSteps": {
+                        "edges": [
+                          {
+                            "node": {
+                              "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
+                              "name": [
+                                {
+                                  "languageCode": "en",
+                                  "languageText": "Process Step example"
+                                }
+                              ],
+                              "description": null,
+                              "technicalPackageID": "2ERNUDMGB",
+                              "codeBlocks": [
+                                {
+                                  "codeBlockIndex": 1,
+                                  "codeBlockTitle": "First doc",
+                                  "codeBlockType": "DOCUMENTATION",
+                                  "processStepInstance": null
+                                },
+                                {
+                                  "codeBlockIndex": 2,
+                                  "codeBlockTitle": "First code",
+                                  "codeBlockType": "CODE",
+                                  "processStepInstance": {
+                                    "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                                    "name": [
+                                      {
+                                        "languageCode": "en",
+                                        "languageText": "Process Step Instance example"
+                                      }
+                                    ],
+                                    "transformableInputs": {
+                                      "edges": [
+                                        {
+                                          "node": {
+                                            "id": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+                                            "inputId": {
+                                              "__typename": "UnitDataSet"
+                                            },
+                                            "name": [
+                                              {
+                                                "languageCode": "en",
+                                                "languageText": "Transformable input example"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "transformedOutputs": {
+                                      "edges": [
+                                        {
+                                          "node": {
+                                            "id": "b2cb6c85-995a-498e-a988-178daf5b98aa",
+                                            "outputId": {
+                                              "__typename": "UnitDataSet"
+                                            },
+                                            "name": [
+                                              {
+                                                "languageCode": "en",
+                                                "languageText": "Transformed output example"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "codeBlockIndex": 3,
+                                  "codeBlockTitle": "Second code",
+                                  "codeBlockType": "CODE",
+                                  "processStepInstance": {
+                                    "id": "d7eb0706-f6c8-4fa5-8aae-702613ce9911",
+                                    "name": [
+                                      {
+                                        "languageCode": "en",
+                                        "languageText": "Process Step Instance example"
+                                      }
+                                    ],
+                                    "transformableInputs": {
+                                      "edges": [
+                                        {
+                                          "node": {
+                                            "id": "f4ff8746-a71f-4eef-8870-9b5de120d7ce",
+                                            "inputId": {
+                                              "__typename": "UnitDataSet"
+                                            },
+                                            "name": [
+                                              {
+                                                "languageCode": "en",
+                                                "languageText": "Transformable input example"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    "transformedOutputs": {
+                                      "edges": [
+                                        {
+                                          "node": {
+                                            "id": "b2cb6c85-995a-498e-a988-178daf5b98aa",
+                                            "outputId": {
+                                              "__typename": "UnitDataSet"
+                                            },
+                                            "name": [
+                                              {
+                                                "languageCode": "en",
+                                                "languageText": "Transformed output example"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "codeBlockIndex": 4,
+                                  "codeBlockTitle": "Second doc",
+                                  "codeBlockType": "DOCUMENTATION",
+                                  "processStepInstance": null
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
