@@ -134,13 +134,13 @@ module.exports = function () {
       let url = getUrl(req.query.lds)
       return post(url + 'graphql', {
         query: graphqlPrinter(getStatisticalProgramById),
-        variables: { id: req.id }
+        variables: { id: req.params.id }
       }, {headers: getHeaders(req)})
         .then((response) => {
           if (response.data.data) {
             res.status(response.status).send(mapProcessGraph(response.data.data))
           } else {
-            res.status(404).send('Data not found for: ' + req.id)
+            res.status(404).send('Data not found for: ' + req.params.id)
           }
         })
         .catch(handleError(res))
