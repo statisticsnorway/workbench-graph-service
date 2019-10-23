@@ -38,6 +38,7 @@ module.exports = function () {
   /* istanbul ignore next */
   function handleError (res) {
     return (error) => {
+      console.error('Handling error', error)
       if (error instanceof Error) {
         if (error.response && error.response.data) {
           res.status(error.response.status).send(error.response.data.message)
@@ -125,7 +126,7 @@ module.exports = function () {
         }
       }
     } catch (e) {
-      console.error(e)
+      console.error('Transformation error', e)
     }
   }
 
