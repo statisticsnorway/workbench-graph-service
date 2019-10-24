@@ -37,7 +37,7 @@
     {
       "id": "8560b6c5-87ec-45df-b320-d1196c9573de",
       "label": "Statistical Program Cycle example",
-      "type": "BusinessProcess"
+      "type": "StatisticalProgramCycle"
     },
     {
       "id": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
@@ -79,5 +79,8 @@
       "label": "Second doc",
       "type": "CodeBlock"
     }
-  ]
+  ],
+  "root": {
+    "id": "8560b6c5-87ec-45df-b320-d1196c9573de"
+  }
 }

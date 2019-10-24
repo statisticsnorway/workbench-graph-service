@@ -65,7 +65,7 @@
     {
       "id": "0bf82f62-5753-4186-8c60-ca1198873b48",
       "label": "Skattestatistikk for personer 2020",
-      "type": "BusinessProcess"
+      "type": "StatisticalProgramCycle"
     },
     {
       "id": "14b01324-998b-4b83-b4e4-bd716f598651",
@@ -142,5 +142,8 @@
       "label": "1_3_1 Aggregere - Skatteobjekter til person nivå",
       "type": "ProcessStep"
     }
-  ]
+  ],
+  "root": {
+    "id": "0bf82f62-5753-4186-8c60-ca1198873b48"
+  }
 }
