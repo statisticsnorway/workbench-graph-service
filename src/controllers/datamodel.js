@@ -109,6 +109,7 @@ module.exports = function () {
           addToResult(obj, e, result, nodeType.CODE_BLOCK)
         })
       }
+      /*
       if (obj['processStepInstance']) {
         if (obj['processStepInstance']['transformedOutputs']) {
           const cb = obj['processStepInstance']['transformedOutputs']
@@ -125,6 +126,7 @@ module.exports = function () {
           })
         }
       }
+      */
     } catch (e) {
       console.error('Transformation error', e)
     }
