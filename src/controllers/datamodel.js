@@ -5,11 +5,13 @@ const getStatisticalProgramById = require('../query/getStatisticalProgramById')
 const graphqlPrinter = require('graphql/language/printer').print
 
 const humanizeGraphQLResponse = require('../util/graphQL')
-const nodeType = {
-  BUSINESS_PROCESS: 'BusinessProcess',
-  PROCESS_STEP: 'ProcessStep',
-  CODE_BLOCK: 'CodeBlock',
-  UNIT_DATASET: 'UnitDataset'
+const nodeTypeMap = {
+  BUSINESS_PROCESS_REVERSE: { path: 'previousBusinessProcess', type: 'BusinessProcess' , reverse: true},
+  BUSINESS_PROCESS: { path: 'businessProcesses', type: 'BusinessProcess' },
+  PROCESS_STEP: { path: 'processSteps', type: 'ProcessStep' },
+  CODE_BLOCK: { path: 'codeBlocks', type: 'CodeBlock' },
+  //INPUT_DATASET: { path: 'processStepInstance.transformableInputs', type: 'UnitDataset', reverse: true},
+  //OUTPUT_DATASET: { path: 'processStepInstance.transformedOutputs', type: 'UnitDataset'}
 }
 
 module.exports = function () {
@@ -28,12 +30,11 @@ module.exports = function () {
   }
 
   // Get the authorization header from the request and use this for get authorized access to LDS
-  function getHeaders(req) {
+  function getHeaders (req) {
     return {
-      "authorization": req.headers["authorization"] || "",
-    };
+      'authorization': req.headers['authorization'] || '',
+    }
   }
-
 
   /* istanbul ignore next */
   function handleError (res) {
@@ -55,78 +56,58 @@ module.exports = function () {
 
   function mapProcessGraph (model) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById.statisticalProgramCycles[0]
-    let result = { nodes: [], edges: [] }
-    addToResult(null, obj, result, nodeType.BUSINESS_PROCESS)
+    let result = { root: {id: obj.id}, nodes: [], edges: [] }
+    addToResult(null, obj, result, 'StatisticalProgramCycle')
+    return result
+  }
+
+  function mapDatasetGraph (model) {
+    const obj = humanizeGraphQLResponse(model).StatisticalProgramById.statisticalProgramCycles[0]
+    let result = { root: {id: obj.id}, nodes: [], edges: [] }
+    addToResult(null, obj, result, 'StatisticalProgramCycle')
     return result
   }
 
   function createNode (obj, type) {
     // TODO: Use language code
-    return { id: obj.id, label: obj.name[0].languageText, type: type }
+    return { id: obj.id, label: obj.name ? obj.name[0].languageText : 'no name', type: type }
   }
 
   function createCodeBlock (obj) {
-    return { id: obj.id, label: obj.codeBlockTitle || 'Kode blokk', type: nodeType.CODE_BLOCK }
+    return { id: obj.id, label: obj.codeBlockTitle || 'Kode blokk', type: nodeTypeMap.CODE_BLOCK.type }
   }
 
   function createEdge (from, to) {
     return { from: from.id, to: to.id }
   }
 
-  function addToResult (parent, obj, result, type) {
+  function addToResult (parent, obj, result, type, reverse = false) {
     try {
-      if (type === nodeType.CODE_BLOCK ) {
+      if (type === nodeTypeMap.CODE_BLOCK.type) {
         obj.id = parent.id + obj.codeBlockIndex
         result.nodes.push(createCodeBlock(obj))
       } else {
         result.nodes.push(createNode(obj, type))
       }
-      if (parent) {
+      if (parent && reverse) {
+        //result.edges.push(createEdge(result.root, obj))
+        result.edges.push(createEdge(obj, parent))
+      } else if (parent) {
         result.edges.push(createEdge(parent, obj))
       }
-      // Reverse direction
-      if (obj['previousBusinessProcess']) {
-        const prev = obj['previousBusinessProcess']
-        result.nodes.push(createNode(prev, nodeType.BUSINESS_PROCESS))
-        result.edges.push(createEdge(prev, obj))
-      }
-      if (obj['businessProcesses']) {
-        const bp = obj['businessProcesses']
-        bp.forEach(e => {
-          addToResult(obj, e, result, nodeType.BUSINESS_PROCESS)
-        })
-      }
-      if (obj['processSteps']) {
-        const ps = obj['processSteps']
-        ps.forEach(e => {
-          addToResult(obj, e, result, nodeType.PROCESS_STEP)
-        })
-      }
 
-      if (obj['codeBlocks']) {
-        const cb = obj['codeBlocks']
-        cb.forEach(e => {
-          addToResult(obj, e, result, nodeType.CODE_BLOCK)
-        })
-      }
-      /*
-      if (obj['processStepInstance']) {
-        if (obj['processStepInstance']['transformedOutputs']) {
-          const cb = obj['processStepInstance']['transformedOutputs']
-          cb.forEach(e => {
-            addToResult(obj, e, result, nodeType.UNIT_DATASET)
-          })
+      Object.values(nodeTypeMap).forEach(node => {
+        if (obj[node.path]) {
+          const value = obj[node.path]
+          if (Array.isArray(value)) {
+            value.forEach(e => {
+              addToResult(obj, e, result, node.type, node.reverse)
+            })
+          } else {
+            addToResult(obj, value, result, node.type, node.reverse)
+          }
         }
-        // Reverse direction
-        if (obj['processStepInstance']['transformableInputs']) {
-          const ti = obj['processStepInstance']['transformableInputs']
-          ti.forEach(e => {
-            result.nodes.push(createNode(e, nodeType.UNIT_DATASET))
-            result.edges.push(createEdge(e, obj))
-          })
-        }
-      }
-      */
+      })
     } catch (e) {
       console.error('Transformation error', e)
     }
@@ -138,7 +119,7 @@ module.exports = function () {
       return post(url + 'graphql', {
         query: graphqlPrinter(getStatisticalProgramById),
         variables: { id: req.params.id }
-      }, {headers: getHeaders(req)})
+      }, { headers: getHeaders(req) })
         .then((response) => {
           if (response.data.data) {
             res.status(response.status).send(mapProcessGraph(response.data.data))

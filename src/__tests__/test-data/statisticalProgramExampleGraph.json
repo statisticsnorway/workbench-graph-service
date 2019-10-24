@@ -9,6 +9,10 @@
       "to": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f"
     },
     {
+      "from": "dad379da-475c-44ac-98d7-56307c10a53c",
+      "to": "ecd92c16-8119-4106-bc65-70dcc858d1cc"
+    },
+    {
       "from": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
       "to": "1eef14a0-ff0c-4f43-9416-e9c871326c82"
     },
@@ -44,6 +48,11 @@
       "id": "dad379da-475c-44ac-98d7-56307c10a53c",
       "label": "Business Process dependency example",
       "type": "BusinessProcess"
+    },
+    {
+      "id": "ecd92c16-8119-4106-bc65-70dcc858d1cc",
+      "label": "Process Step dependency example",
+      "type": "ProcessStep"
     },
     {
       "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
