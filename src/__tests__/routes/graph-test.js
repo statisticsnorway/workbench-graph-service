@@ -36,6 +36,15 @@ describe('Test /api/graph endpoints', () => {
     await request(app).get('/api/graph/statisticalProgram/dummyId').expect(200, statisticalProgramSkattGraph)
   })
 
+  /*
+  test('It should return a dataset graph of statistical program tax example', async () => {
+    moxios.stubRequest('http://mock/graphql', {
+      status: 200,
+      response: statisticalProgramSkatt
+    })
+    await request(app).get('/api/graph/statisticalProgram/dummyId?filter=datasets').expect(200, statisticalProgramSkattGraph)
+  })
+*/
   test('It should return 404 not found', async () => {
     moxios.stubRequest('http://mock/graphql', {
       status: 404,

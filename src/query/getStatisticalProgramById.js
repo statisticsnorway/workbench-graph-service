@@ -55,8 +55,15 @@ module.exports = gql`
                                                             transformableInputs {
                                                                 edges {
                                                                     node {
+                                                                        id
                                                                         inputId {
-                                                                            __typename
+                                                                            ... on UnitDataSet {
+                                                                                id
+                                                                                name {
+                                                                                    languageCode
+                                                                                    languageText
+                                                                                }
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -69,6 +76,15 @@ module.exports = gql`
                                                                 edges {
                                                                     node {
                                                                         id
+                                                                        outputId {
+                                                                            ... on UnitDataSet {
+                                                                                id
+                                                                                name {
+                                                                                    languageCode
+                                                                                    languageText
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -101,8 +117,15 @@ module.exports = gql`
                                                         transformableInputs {
                                                             edges {
                                                                 node {
+                                                                    id
                                                                     inputId {
-                                                                        __typename
+                                                                        ... on UnitDataSet {
+                                                                            id
+                                                                            name {
+                                                                                languageCode
+                                                                                languageText
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -115,6 +138,15 @@ module.exports = gql`
                                                             edges {
                                                                 node {
                                                                     id
+                                                                    outputId {
+                                                                        ... on UnitDataSet {
+                                                                            id
+                                                                            name {
+                                                                                languageCode
+                                                                                languageText
+                                                                            }
+                                                                        }
+                                                                    }
                                                                 }
                                                             }
                                                         }

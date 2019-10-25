@@ -5,14 +5,10 @@ const getStatisticalProgramById = require('../query/getStatisticalProgramById')
 const graphqlPrinter = require('graphql/language/printer').print
 
 const humanizeGraphQLResponse = require('../util/graphQL')
-const nodeTypeMap = {
-  BUSINESS_PROCESS_REVERSE: { path: 'previousBusinessProcess', type: 'BusinessProcess' , reverse: true},
-  BUSINESS_PROCESS: { path: 'businessProcesses', type: 'BusinessProcess' },
-  PROCESS_STEP: { path: 'processSteps', type: 'ProcessStep' },
-  CODE_BLOCK: { path: 'codeBlocks', type: 'CodeBlock' },
-  //INPUT_DATASET: { path: 'processStepInstance.transformableInputs', type: 'UnitDataset', reverse: true},
-  //OUTPUT_DATASET: { path: 'processStepInstance.transformedOutputs', type: 'UnitDataset'}
-}
+
+const GraphMapper = require('../query/graphMapper').GraphMapper
+const nodeTypes = require('../query/graphMapper').nodeTypes
+const invisible = require('../query/graphMapper').invisible
 
 module.exports = function () {
 
@@ -55,62 +51,21 @@ module.exports = function () {
   }
 
   function mapProcessGraph (model) {
-    const obj = humanizeGraphQLResponse(model).StatisticalProgramById.statisticalProgramCycles[0]
-    let result = { root: {id: obj.id}, nodes: [], edges: [] }
-    addToResult(null, obj, result, 'StatisticalProgramCycle')
-    return result
+    const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
+    const mappedTypes = [nodeTypes.BUSINESS_PROCESS_REVERSE, nodeTypes.BUSINESS_PROCESS, nodeTypes.PROCESS_STEP,
+      nodeTypes.CODE_BLOCK]
+    return new GraphMapper(obj, mappedTypes, nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
+  }
+
+  function hasCodeBlocks (processStep) {
+    return processStep.codeBlocks && processStep.codeBlocks.length > 0
   }
 
   function mapDatasetGraph (model) {
-    const obj = humanizeGraphQLResponse(model).StatisticalProgramById.statisticalProgramCycles[0]
-    let result = { root: {id: obj.id}, nodes: [], edges: [] }
-    addToResult(null, obj, result, 'StatisticalProgramCycle')
-    return result
-  }
-
-  function createNode (obj, type) {
-    // TODO: Use language code
-    return { id: obj.id, label: obj.name ? obj.name[0].languageText : 'no name', type: type }
-  }
-
-  function createCodeBlock (obj) {
-    return { id: obj.id, label: obj.codeBlockTitle || 'Kode blokk', type: nodeTypeMap.CODE_BLOCK.type }
-  }
-
-  function createEdge (from, to) {
-    return { from: from.id, to: to.id }
-  }
-
-  function addToResult (parent, obj, result, type, reverse = false) {
-    try {
-      if (type === nodeTypeMap.CODE_BLOCK.type) {
-        obj.id = parent.id + obj.codeBlockIndex
-        result.nodes.push(createCodeBlock(obj))
-      } else {
-        result.nodes.push(createNode(obj, type))
-      }
-      if (parent && reverse) {
-        //result.edges.push(createEdge(result.root, obj))
-        result.edges.push(createEdge(obj, parent))
-      } else if (parent) {
-        result.edges.push(createEdge(parent, obj))
-      }
-
-      Object.values(nodeTypeMap).forEach(node => {
-        if (obj[node.path]) {
-          const value = obj[node.path]
-          if (Array.isArray(value)) {
-            value.forEach(e => {
-              addToResult(obj, e, result, node.type, node.reverse)
-            })
-          } else {
-            addToResult(obj, value, result, node.type, node.reverse)
-          }
-        }
-      })
-    } catch (e) {
-      console.error('Transformation error', e)
-    }
+    const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
+    const processSteps = obj.businessProcesses.flatMap(bp => bp.processSteps.filter(hasCodeBlocks))
+    const mappedTypes = [invisible(nodeTypes.CODE_BLOCK), nodeTypes.INPUT_DATASET, nodeTypes.OUTPUT_DATASET]
+    return new GraphMapper(processSteps, mappedTypes, nodeTypes.PROCESS_STEP.type).graph
   }
 
   return {
@@ -122,7 +77,11 @@ module.exports = function () {
       }, { headers: getHeaders(req) })
         .then((response) => {
           if (response.data.data) {
-            res.status(response.status).send(mapProcessGraph(response.data.data))
+            if (req.query.filter === 'datasets') {
+              res.status(response.status).send(mapDatasetGraph(response.data.data))
+            } else {
+              res.status(response.status).send(mapProcessGraph(response.data.data))
+            }
           } else {
             res.status(404).send('Data not found for: ' + req.params.id)
           }

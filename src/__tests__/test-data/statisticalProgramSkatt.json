@@ -1,12 +1,6 @@
 {
   "data": {
     "StatisticalProgramById": {
-      "name": [
-        {
-          "languageCode": "nb",
-          "languageText": "Skattestatistikk for personer"
-        }
-      ],
       "statisticalProgramCycles": {
         "edges": [
           {
@@ -125,31 +119,30 @@
                                   "codeBlockIndex": 4,
                                   "codeBlockTitle": "Data innlasting",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
                                   "processStepInstance": {
                                     "id": "9c907bbf-25e1-49fb-a605-7b94cc07c31f",
-                                    "name": [
-                                      {
-                                        "languageCode": "nb",
-                                        "languageText": "1_2_1 Input datasett"
-                                      }
-                                    ],
                                     "transformableInputs": {
                                       "edges": [
                                         {
                                           "node": {
                                             "id": "491d01b5-6e42-427a-b5c3-483b49badcb4",
                                             "inputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_2_1 Dataset innlasting"
-                                              }
-                                            ]
+                                              "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "konto"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
+                                    },
+                                    "processExecutionCode": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
+                                    "processExecutionLog": {
+                                      "logMessage": "A boat with caught fish!"
                                     },
                                     "transformedOutputs": null
                                   }
@@ -158,29 +151,28 @@
                                   "codeBlockIndex": 14,
                                   "codeBlockTitle": "Skrive utledet datasett til LDS",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
                                   "processStepInstance": {
                                     "id": "3754b390-a49b-4db9-a37e-8d8316ee75ca",
-                                    "name": [
-                                      {
-                                        "languageCode": "nb",
-                                        "languageText": "1_2_1 Output dataset"
-                                      }
-                                    ],
                                     "transformableInputs": null,
+                                    "processExecutionCode": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
+                                    "processExecutionLog": {
+                                      "logMessage": "A boat with caught fish!"
+                                    },
                                     "transformedOutputs": {
                                       "edges": [
                                         {
                                           "node": {
                                             "id": "7a126c46-6b4e-496c-be79-8ee24713aeed",
                                             "outputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_2_1 output dataset"
-                                              }
-                                            ]
+                                              "id": "f8249a67-391a-4362-97fa-3fa3ce43b943",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "Konto_med_utledninger"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
@@ -211,31 +203,30 @@
                                   "codeBlockIndex": 4,
                                   "codeBlockTitle": "Data innlasting",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\n#GSIM id må endres når LDs er populert\neiendom = spark.read.format(\"no.ssb.gsim.spark\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\n",
                                   "processStepInstance": {
                                     "id": "bd0229e7-d331-4bef-9d4c-1e77392f8285",
-                                    "name": [
-                                      {
-                                        "languageCode": "nb",
-                                        "languageText": "1_2_2 Data innlasting"
-                                      }
-                                    ],
                                     "transformableInputs": {
                                       "edges": [
                                         {
                                           "node": {
                                             "id": "676657f3-cde8-421d-a5b4-296f59c0a961",
                                             "inputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_2_2 Input datasett Eiendom"
-                                              }
-                                            ]
+                                              "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "Eiendom"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
+                                    },
+                                    "processExecutionCode": "%pyspark\\n#GSIM id må endres når LDs er populert\\neiendom = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\\n",
+                                    "processExecutionLog": {
+                                      "logMessage": "A boat with caught fish!"
                                     },
                                     "transformedOutputs": null
                                   }
@@ -244,29 +235,28 @@
                                   "codeBlockIndex": 13,
                                   "codeBlockTitle": "Lagre utledede eiendomsvaribler på enhetsnivå",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\neiendom_utledet.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\")",
                                   "processStepInstance": {
                                     "id": "62672eb0-d879-48b5-aa7c-1a1923fc1b10",
-                                    "name": [
-                                      {
-                                        "languageCode": "nb",
-                                        "languageText": "1_2_2 Output datasett eiendom"
-                                      }
-                                    ],
                                     "transformableInputs": null,
+                                    "processExecutionCode": "%pyspark\\neiendom_utledet.write\\\\\\n       .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n       .mode(\\\"overwrite\\\")\\\\\\n       .save(\\\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\\\")",
+                                    "processExecutionLog": {
+                                      "logMessage": "A boat with caught fish!"
+                                    },
                                     "transformedOutputs": {
                                       "edges": [
                                         {
                                           "node": {
                                             "id": "b846857a-9d9e-4b44-b82d-b28b3202a42a",
                                             "outputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_2_2 Output datasett"
-                                              }
-                                            ]
+                                              "id": "f391a9ce-07f2-42d8-ace9-abbff1cede63",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "Eiendom_med_utledninger"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
@@ -297,63 +287,63 @@
                                   "codeBlockIndex": 3,
                                   "codeBlockTitle": "Data innlasting",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\nskattRawData = spark.read.load('gs://ssb-data-staging/data/skatt-auto-011.parquet')",
                                   "processStepInstance": null
                                 },
                                 {
                                   "codeBlockIndex": 9,
                                   "codeBlockTitle": "Skriv skatteobjekter til Datalager",
                                   "codeBlockType": "CODE",
+                                  "codeBlockValue": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
                                   "processStepInstance": {
                                     "id": "42484c58-cbec-409e-8f62-a073421d1bf3",
-                                    "name": [
-                                      {
-                                        "languageCode": "nb",
-                                        "languageText": "1_1_1 Output dataset"
-                                      }
-                                    ],
                                     "transformableInputs": null,
+                                    "processExecutionCode": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
+                                    "processExecutionLog": {
+                                      "logMessage": "A boat with caught fish!"
+                                    },
                                     "transformedOutputs": {
                                       "edges": [
                                         {
                                           "node": {
                                             "id": "3a0971fa-4c76-4736-869d-931ab9b08be1",
                                             "outputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_1_1 Output datasett Konto"
-                                              }
-                                            ]
+                                              "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "konto"
+                                                }
+                                              ]
+                                            }
                                           }
                                         },
                                         {
                                           "node": {
                                             "id": "48678959-1d36-46dc-9599-49b4a16031e1",
                                             "outputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_1_1 Output datasett Eiendom"
-                                              }
-                                            ]
+                                              "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "Eiendom"
+                                                }
+                                              ]
+                                            }
                                           }
                                         },
                                         {
                                           "node": {
                                             "id": "65744fe7-1445-4137-8db9-92832be657a9",
                                             "outputId": {
-                                              "__typename": "UnitDataSet"
-                                            },
-                                            "name": [
-                                              {
-                                                "languageCode": "nb",
-                                                "languageText": "1_1_1 Output datasett Lønn og tilsvarende ytelser"
-                                              }
-                                            ]
+                                              "id": "3ad4a37c-f1bc-436f-ba67-dfce980610b3",
+                                              "name": [
+                                                {
+                                                  "languageCode": "nb",
+                                                  "languageText": "loennOgTilsvarendeYtelser"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
