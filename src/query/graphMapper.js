@@ -49,11 +49,7 @@ class GraphMapper {
 
   addToResult = (parent, obj, type, reverse = false, invisible = false) => {
     try {
-      if (Array.isArray(obj)) {
-        obj.forEach(e => {
-          this.addToResult(invisible ? parent : obj, e, type, reverse, invisible)
-        })
-      } else if (!invisible) {
+      if (!invisible) {
         this.addRelation(parent, obj, type, reverse)
       }
 
