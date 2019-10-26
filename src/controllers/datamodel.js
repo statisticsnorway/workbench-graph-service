@@ -3,6 +3,7 @@ const env = process.env.NODE_ENV
 const properties = require('../properties')[env]
 const getStatisticalProgramById = require('../query/getStatisticalProgramById')
 const graphqlPrinter = require('graphql/language/printer').print
+const _ = require('lodash')
 
 const humanizeGraphQLResponse = require('../util/graphQL')
 
@@ -57,15 +58,54 @@ module.exports = function () {
     return new GraphMapper(obj, mappedTypes, nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
   }
 
-  function hasCodeBlocks (processStep) {
-    return processStep.codeBlocks && processStep.codeBlocks.length > 0
-  }
-
+  // TODO: Move code into GraphMapper
   function mapDatasetGraph (model) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
-    const processSteps = obj.businessProcesses.flatMap(bp => bp.processSteps.filter(hasCodeBlocks))
-    const mappedTypes = [invisible(nodeTypes.CODE_BLOCK), nodeTypes.INPUT_DATASET, nodeTypes.OUTPUT_DATASET]
-    return new GraphMapper(processSteps, mappedTypes, nodeTypes.PROCESS_STEP.type).graph
+    const processSteps = obj.businessProcesses.flatMap(bp => bp.processSteps.filter(nonEmpty('codeBlocks')))
+    let result = { nodes: [], edges: [] }
+    processSteps.reduce((prev, obj) => {
+      const inputDS = obj.codeBlocks.filter(nonEmpty('processStepInstance.transformableInputs'))
+        .flatMap(toArray('processStepInstance.transformableInputs')).map(ti => ti.inputId)
+      const outputDS = obj.codeBlocks.filter(nonEmpty('processStepInstance.transformedOutputs'))
+        .flatMap(toArray('processStepInstance.transformedOutputs')).map(ti => ti.outputId)
+      inputDS.forEach(input => {
+        addNode(createNode(input, nodeTypes.INPUT_DATASET.type), result)
+        outputDS.forEach(output => {
+          addNode(createNode(output, nodeTypes.OUTPUT_DATASET.type), result)
+          result.edges.push(createEdge(input, output))
+        })
+      })
+    }, result)
+    return result
+  }
+
+  function nonEmpty (path) {
+    return function (obj) {
+      const arr = _.get(obj, path)
+      return arr && arr.length > 0
+    }
+  }
+
+  function toArray (path) {
+    return function (obj) {
+      return _.get(obj, path, [])
+    }
+  }
+
+  function addNode(node, result) {
+    // Check to avoid duplicates
+    if (!result.nodes.find(e => e.id === node.id)) {
+      result.nodes.push(node)
+    }
+  }
+
+  function createNode (obj, type) {
+    // TODO: Use language code
+    return { id: obj.id, label: obj.name ? obj.name[0].languageText : 'no name', type: type }
+  }
+
+  function createEdge (from, to) {
+    return { from: from.id, to: to.id }
   }
 
   return {
