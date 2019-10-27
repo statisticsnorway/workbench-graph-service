@@ -5,6 +5,7 @@ const _ = require('lodash')
 */
 const nodeTypes = {
   STATISTICAL_PROGRAM_CYCLE: { path: 'statisticalProgramCycles', type: 'StatisticalProgramCycle' },
+  BUSINESS_PROCESS_CHILDREN: { path: 'reverseBusinessProcessParentBusinessProcess', type: 'BusinessProcess' },
   BUSINESS_PROCESS_REVERSE: { path: 'previousBusinessProcess', type: 'BusinessProcess', reverse: true },
   BUSINESS_PROCESS: { path: 'businessProcesses', type: 'BusinessProcess' },
   PROCESS_STEP: { path: 'processSteps', type: 'ProcessStep' },
