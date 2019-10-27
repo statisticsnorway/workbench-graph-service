@@ -15,6 +15,7 @@ const nodeTypes = {
 }
 
 // Mark a node type to invisible (not shown as part of the graph)
+/* istanbul ignore next */
 const invisible = (type) => {
   type.invisible = true
   return type
@@ -62,11 +63,13 @@ class GraphMapper {
               this.addToResult(invisible ? parent : obj, e, node.type, node.reverse, node.invisible)
             })
           } else {
+            /* istanbul ignore next */
             this.addToResult(invisible ? parent : obj, value, node.type, node.reverse, node.invisible)
           }
         }
       })
     } catch (e) {
+      /* istanbul ignore next */
       console.error('Transformation error', e)
     }
   }
