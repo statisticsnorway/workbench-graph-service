@@ -61,7 +61,8 @@ module.exports = function () {
   // TODO: Move code into GraphMapper
   function mapDatasetGraph (model) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
-    const processSteps = obj.businessProcesses.concat(obj.reverseBusinessProcessParentBusinessProcess)
+    const processSteps = obj.businessProcesses
+      .concat(obj.businessProcesses.flatMap(bp => bp.reverseBusinessProcessParentBusinessProcess))
       .filter(nonEmpty('processSteps'))
       .flatMap(bp => bp.processSteps.filter(nonEmpty('codeBlocks')))
     let result = { nodes: [], edges: [] }

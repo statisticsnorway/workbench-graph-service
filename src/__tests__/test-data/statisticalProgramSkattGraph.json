@@ -6,22 +6,18 @@
     },
     {
       "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "to": "157cf735-107b-4515-b2ef-79350e486673"
+    },
+    {
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6"
     },
     {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "0c50255f-c747-4d01-9827-c0185474c3db"
     },
     {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
-      "to": "12f1a40a-d7e3-4726-ae17-75e9decd46b3"
-    },
-    {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
-      "to": "21b55847-1a82-4aae-8d27-30b9ccddc42d"
-    },
-    {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a"
     },
     {
@@ -33,7 +29,7 @@
       "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a14"
     },
     {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "3d2fbe09-a052-46bc-b361-9e10706d784d"
     },
     {
@@ -45,7 +41,7 @@
       "to": "3d2fbe09-a052-46bc-b361-9e10706d784d13"
     },
     {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c0"
     },
     {
@@ -57,8 +53,24 @@
       "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c09"
     },
     {
-      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "8a0453bf-15ef-487a-9f25-f6f663184214"
+    },
+    {
+      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "to": "2ddd14b5-9217-4b88-9d53-a4c3bfca5076"
+    },
+    {
+      "from": "2ddd14b5-9217-4b88-9d53-a4c3bfca5076",
+      "to": "21b55847-1a82-4aae-8d27-30b9ccddc42d"
+    },
+    {
+      "from": "14b01324-998b-4b83-b4e4-bd716f598651",
+      "to": "417b262c-7022-435c-9911-57b34e3563cf"
+    },
+    {
+      "from": "417b262c-7022-435c-9911-57b34e3563cf",
+      "to": "12f1a40a-d7e3-4726-ae17-75e9decd46b3"
     }
   ],
   "nodes": [
@@ -73,6 +85,11 @@
       "type": "BusinessProcess"
     },
     {
+      "id": "157cf735-107b-4515-b2ef-79350e486673",
+      "label": "Etablere klargjøringsgrunnlag",
+      "type": "BusinessProcess"
+    },
+    {
       "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
       "label": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser",
       "type": "ProcessStep"
@@ -80,16 +97,6 @@
     {
       "id": "0c50255f-c747-4d01-9827-c0185474c3db",
       "label": "1_3_2 Aggregere - Kombiner til samlet persondatasett",
-      "type": "ProcessStep"
-    },
-    {
-      "id": "12f1a40a-d7e3-4726-ae17-75e9decd46b3",
-      "label": "3_1 Klargjort - Lagringskontroll",
-      "type": "ProcessStep"
-    },
-    {
-      "id": "21b55847-1a82-4aae-8d27-30b9ccddc42d",
-      "label": "2_1 Vurdere - Dashboard",
       "type": "ProcessStep"
     },
     {
@@ -140,6 +147,26 @@
     {
       "id": "8a0453bf-15ef-487a-9f25-f6f663184214",
       "label": "1_3_1 Aggregere - Skatteobjekter til person nivå",
+      "type": "ProcessStep"
+    },
+    {
+      "id": "2ddd14b5-9217-4b88-9d53-a4c3bfca5076",
+      "label": "Klargjøringsanalyse",
+      "type": "BusinessProcess"
+    },
+    {
+      "id": "21b55847-1a82-4aae-8d27-30b9ccddc42d",
+      "label": "2_1 Vurdere - Dashboard",
+      "type": "ProcessStep"
+    },
+    {
+      "id": "417b262c-7022-435c-9911-57b34e3563cf",
+      "label": "Etablere klargjorte data",
+      "type": "BusinessProcess"
+    },
+    {
+      "id": "12f1a40a-d7e3-4726-ae17-75e9decd46b3",
+      "label": "3_1 Klargjort - Lagringskontroll",
       "type": "ProcessStep"
     }
   ],

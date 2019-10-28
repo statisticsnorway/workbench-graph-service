@@ -12,12 +12,12 @@
   "nodes": [
     {
       "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
-      "label": "konto",
+      "label": "Konto",
       "type": "UnitDataset"
     },
     {
       "id": "f8249a67-391a-4362-97fa-3fa3ce43b943",
-      "label": "Konto_med_utledninger",
+      "label": "Konto med utledninger",
       "type": "UnitDataset"
     },
     {
@@ -27,7 +27,7 @@
     },
     {
       "id": "f391a9ce-07f2-42d8-ace9-abbff1cede63",
-      "label": "Eiendom_med_utledninger",
+      "label": "Eiendom med utledninger",
       "type": "UnitDataset"
     }
   ]

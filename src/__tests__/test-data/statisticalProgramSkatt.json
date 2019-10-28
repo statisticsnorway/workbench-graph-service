@@ -29,318 +29,128 @@
                         }
                       ],
                       "description": null,
-                      "previousBusinessProcess": null,
-                      "processSteps": {
+                      "reverseBusinessProcessParentBusinessProcess": {
                         "edges": [
                           {
                             "node": {
-                              "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
+                              "id": "157cf735-107b-4515-b2ef-79350e486673",
                               "name": [
                                 {
                                   "languageCode": "nb",
-                                  "languageText": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser"
+                                  "languageText": "Etablere klargjøringsgrunnlag"
                                 }
                               ],
-                              "description": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n* Konto\n* Lønn og tilsvarende ytelser\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
-                                }
-                              ],
-                              "technicalPackageID": "2EPFGED2B",
-                              "codeBlocks": null
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "0c50255f-c747-4d01-9827-c0185474c3db",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "1_3_2 Aggregere - Kombiner til samlet persondatasett"
-                                }
-                              ],
-                              "description": null,
-                              "technicalPackageID": "2ES55KHQY",
-                              "codeBlocks": null
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "12f1a40a-d7e3-4726-ae17-75e9decd46b3",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "3_1 Klargjort - Lagringskontroll"
-                                }
-                              ],
-                              "description": null,
-                              "technicalPackageID": "2EQ3FNUSQ",
-                              "codeBlocks": null
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "21b55847-1a82-4aae-8d27-30b9ccddc42d",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "2_1 Vurdere - Dashboard"
-                                }
-                              ],
-                              "description": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "Inn-dataen kommer som ett hirarkisk datasett, og trengs å inspiseres for å sjekke at strukturen er som forventet"
-                                }
-                              ],
-                              "technicalPackageID": "2EQNS2JNY",
-                              "codeBlocks": null
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "1_2_1 Utlede variabler - Konto"
-                                }
-                              ],
-                              "description": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n\nKonto\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
-                                }
-                              ],
-                              "technicalPackageID": "2ES4X6NEZ",
-                              "codeBlocks": [
-                                {
-                                  "codeBlockIndex": 4,
-                                  "codeBlockTitle": "Data innlasting",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
-                                  "processStepInstance": {
-                                    "id": "9c907bbf-25e1-49fb-a605-7b94cc07c31f",
-                                    "transformableInputs": {
-                                      "edges": [
+                              "processSteps": {
+                                "edges": [
+                                  {
+                                    "node": {
+                                      "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
+                                      "name": [
                                         {
-                                          "node": {
-                                            "id": "491d01b5-6e42-427a-b5c3-483b49badcb4",
-                                            "inputId": {
-                                              "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
-                                              "name": [
-                                                {
-                                                  "languageCode": "nb",
-                                                  "languageText": "konto"
-                                                }
-                                              ]
-                                            }
-                                          }
+                                          "languageCode": "nb",
+                                          "languageText": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser"
                                         }
-                                      ]
-                                    },
-                                    "processExecutionCode": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
-                                    "processExecutionLog": {
-                                      "logMessage": "A boat with caught fish!"
-                                    },
-                                    "transformedOutputs": null
-                                  }
-                                },
-                                {
-                                  "codeBlockIndex": 14,
-                                  "codeBlockTitle": "Skrive utledet datasett til LDS",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
-                                  "processStepInstance": {
-                                    "id": "3754b390-a49b-4db9-a37e-8d8316ee75ca",
-                                    "transformableInputs": null,
-                                    "processExecutionCode": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
-                                    "processExecutionLog": {
-                                      "logMessage": "A boat with caught fish!"
-                                    },
-                                    "transformedOutputs": {
-                                      "edges": [
+                                      ],
+                                      "description": [
                                         {
-                                          "node": {
-                                            "id": "7a126c46-6b4e-496c-be79-8ee24713aeed",
-                                            "outputId": {
-                                              "id": "f8249a67-391a-4362-97fa-3fa3ce43b943",
-                                              "name": [
-                                                {
-                                                  "languageCode": "nb",
-                                                  "languageText": "Konto_med_utledninger"
-                                                }
-                                              ]
-                                            }
-                                          }
+                                          "languageCode": "nb",
+                                          "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n* Konto\n* Lønn og tilsvarende ytelser\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
                                         }
-                                      ]
+                                      ],
+                                      "technicalPackageID": "2EPFGED2B",
+                                      "codeBlocks": null
                                     }
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "3d2fbe09-a052-46bc-b361-9e10706d784d",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "1_2_2 Utlede variabler - Eiendom"
-                                }
-                              ],
-                              "description": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
-                                }
-                              ],
-                              "technicalPackageID": "2ET7R69H3",
-                              "codeBlocks": [
-                                {
-                                  "codeBlockIndex": 4,
-                                  "codeBlockTitle": "Data innlasting",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\n#GSIM id må endres når LDs er populert\neiendom = spark.read.format(\"no.ssb.gsim.spark\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\n",
-                                  "processStepInstance": {
-                                    "id": "bd0229e7-d331-4bef-9d4c-1e77392f8285",
-                                    "transformableInputs": {
-                                      "edges": [
+                                  },
+                                  {
+                                    "node": {
+                                      "id": "0c50255f-c747-4d01-9827-c0185474c3db",
+                                      "name": [
                                         {
-                                          "node": {
-                                            "id": "676657f3-cde8-421d-a5b4-296f59c0a961",
-                                            "inputId": {
-                                              "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
-                                              "name": [
-                                                {
-                                                  "languageCode": "nb",
-                                                  "languageText": "Eiendom"
-                                                }
-                                              ]
-                                            }
-                                          }
+                                          "languageCode": "nb",
+                                          "languageText": "1_3_2 Aggregere - Kombiner til samlet persondatasett"
                                         }
-                                      ]
-                                    },
-                                    "processExecutionCode": "%pyspark\\n#GSIM id må endres når LDs er populert\\neiendom = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\\n",
-                                    "processExecutionLog": {
-                                      "logMessage": "A boat with caught fish!"
-                                    },
-                                    "transformedOutputs": null
-                                  }
-                                },
-                                {
-                                  "codeBlockIndex": 13,
-                                  "codeBlockTitle": "Lagre utledede eiendomsvaribler på enhetsnivå",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\neiendom_utledet.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\")",
-                                  "processStepInstance": {
-                                    "id": "62672eb0-d879-48b5-aa7c-1a1923fc1b10",
-                                    "transformableInputs": null,
-                                    "processExecutionCode": "%pyspark\\neiendom_utledet.write\\\\\\n       .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n       .mode(\\\"overwrite\\\")\\\\\\n       .save(\\\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\\\")",
-                                    "processExecutionLog": {
-                                      "logMessage": "A boat with caught fish!"
-                                    },
-                                    "transformedOutputs": {
-                                      "edges": [
-                                        {
-                                          "node": {
-                                            "id": "b846857a-9d9e-4b44-b82d-b28b3202a42a",
-                                            "outputId": {
-                                              "id": "f391a9ce-07f2-42d8-ace9-abbff1cede63",
-                                              "name": [
-                                                {
-                                                  "languageCode": "nb",
-                                                  "languageText": "Eiendom_med_utledninger"
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        }
-                                      ]
+                                      ],
+                                      "description": null,
+                                      "technicalPackageID": "2ES55KHQY",
+                                      "codeBlocks": null
                                     }
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "node": {
-                              "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
-                              "name": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "1_1_1 Preprossessering - Skill ut skatteobjekter"
-                                }
-                              ],
-                              "description": [
-                                {
-                                  "languageCode": "nb",
-                                  "languageText": "Split ut indata i seperate skatteobjekts filer\n\nI dette process steget tar vi inn inn-data fra Skattemelding for personer SIRIUS data.\nData’en er lagret i ett hirarkisk datasett med nestede skatteobjekter.\nFor å foreta videre processering av dataen, må de enkelte skatte objektene skilles ut, og lagres som seperate objekter for senere processering\n\nInput\nDette steget tar som input Inn-datasettet som er knyttet til Skattetatens API for skattemelding for personer.\nDette er eneste input til steget\n\nOutput\nEtter fullført processering vil det lagres seperate datasett for hvert skatte objekt knyttet til skattemeldingen."
-                                }
-                              ],
-                              "technicalPackageID": "2ER3KHD5F",
-                              "codeBlocks": [
-                                {
-                                  "codeBlockIndex": 3,
-                                  "codeBlockTitle": "Data innlasting",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\nskattRawData = spark.read.load('gs://ssb-data-staging/data/skatt-auto-011.parquet')",
-                                  "processStepInstance": null
-                                },
-                                {
-                                  "codeBlockIndex": 9,
-                                  "codeBlockTitle": "Skriv skatteobjekter til Datalager",
-                                  "codeBlockType": "CODE",
-                                  "codeBlockValue": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
-                                  "processStepInstance": {
-                                    "id": "42484c58-cbec-409e-8f62-a073421d1bf3",
-                                    "transformableInputs": null,
-                                    "processExecutionCode": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
-                                    "processExecutionLog": {
-                                      "logMessage": "A boat with caught fish!"
-                                    },
-                                    "transformedOutputs": {
-                                      "edges": [
+                                  },
+                                  {
+                                    "node": {
+                                      "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
+                                      "name": [
                                         {
-                                          "node": {
-                                            "id": "3a0971fa-4c76-4736-869d-931ab9b08be1",
-                                            "outputId": {
-                                              "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
-                                              "name": [
+                                          "languageCode": "nb",
+                                          "languageText": "1_2_1 Utlede variabler - Konto"
+                                        }
+                                      ],
+                                      "description": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n\nKonto\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
+                                        }
+                                      ],
+                                      "technicalPackageID": "2ES4X6NEZ",
+                                      "codeBlocks": [
+                                        {
+                                          "codeBlockIndex": 4,
+                                          "codeBlockTitle": "Data innlasting",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
+                                          "processStepInstance": {
+                                            "id": "9c907bbf-25e1-49fb-a605-7b94cc07c31f",
+                                            "transformableInputs": {
+                                              "edges": [
                                                 {
-                                                  "languageCode": "nb",
-                                                  "languageText": "konto"
+                                                  "node": {
+                                                    "id": "491d01b5-6e42-427a-b5c3-483b49badcb4",
+                                                    "inputId": {
+                                                      "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Konto"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
                                                 }
                                               ]
-                                            }
+                                            },
+                                            "processExecutionCode": "%pyspark\\nkonto = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b')",
+                                            "processExecutionLog": {
+                                              "logMessage": "A boat with caught fish!"
+                                            },
+                                            "transformedOutputs": null
                                           }
                                         },
                                         {
-                                          "node": {
-                                            "id": "48678959-1d36-46dc-9599-49b4a16031e1",
-                                            "outputId": {
-                                              "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
-                                              "name": [
+                                          "codeBlockIndex": 14,
+                                          "codeBlockTitle": "Skrive utledet datasett til LDS",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
+                                          "processStepInstance": {
+                                            "id": "3754b390-a49b-4db9-a37e-8d8316ee75ca",
+                                            "transformableInputs": null,
+                                            "processExecutionCode": "%pyspark\\nkonto_utledet2.write\\\\\\n    .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n    .mode(\\\"overwrite\\\")\\\\\\n    .option(\\\"create\\\", \\\"Konto_med_utledninger\\\")\\\\\\n    .option(\\\"description\\\", \\\"Datasett med utledede variabler for skattestatistikk for personer\\\")\\\\\\n    .save(\\\"lds+gsim://f8249a67-391a-4362-97fa-3fa3ce43b943\\\")",
+                                            "processExecutionLog": {
+                                              "logMessage": "A boat with caught fish!"
+                                            },
+                                            "transformedOutputs": {
+                                              "edges": [
                                                 {
-                                                  "languageCode": "nb",
-                                                  "languageText": "Eiendom"
-                                                }
-                                              ]
-                                            }
-                                          }
-                                        },
-                                        {
-                                          "node": {
-                                            "id": "65744fe7-1445-4137-8db9-92832be657a9",
-                                            "outputId": {
-                                              "id": "3ad4a37c-f1bc-436f-ba67-dfce980610b3",
-                                              "name": [
-                                                {
-                                                  "languageCode": "nb",
-                                                  "languageText": "loennOgTilsvarendeYtelser"
+                                                  "node": {
+                                                    "id": "7a126c46-6b4e-496c-be79-8ee24713aeed",
+                                                    "outputId": {
+                                                      "id": "f8249a67-391a-4362-97fa-3fa3ce43b943",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Konto med utledninger"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
                                                 }
                                               ]
                                             }
@@ -348,27 +158,263 @@
                                         }
                                       ]
                                     }
+                                  },
+                                  {
+                                    "node": {
+                                      "id": "3d2fbe09-a052-46bc-b361-9e10706d784d",
+                                      "name": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "1_2_2 Utlede variabler - Eiendom"
+                                        }
+                                      ],
+                                      "description": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
+                                        }
+                                      ],
+                                      "technicalPackageID": "2ET7R69H3",
+                                      "codeBlocks": [
+                                        {
+                                          "codeBlockIndex": 4,
+                                          "codeBlockTitle": "Data innlasting",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\n#GSIM id må endres når LDs er populert\neiendom = spark.read.format(\"no.ssb.gsim.spark\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\n",
+                                          "processStepInstance": {
+                                            "id": "bd0229e7-d331-4bef-9d4c-1e77392f8285",
+                                            "transformableInputs": {
+                                              "edges": [
+                                                {
+                                                  "node": {
+                                                    "id": "676657f3-cde8-421d-a5b4-296f59c0a961",
+                                                    "inputId": {
+                                                      "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Eiendom"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            "processExecutionCode": "%pyspark\\n#GSIM id må endres når LDs er populert\\neiendom = spark.read.format(\\\"no.ssb.gsim.spark\\\").load('lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540')\\n",
+                                            "processExecutionLog": {
+                                              "logMessage": "A boat with caught fish!"
+                                            },
+                                            "transformedOutputs": null
+                                          }
+                                        },
+                                        {
+                                          "codeBlockIndex": 13,
+                                          "codeBlockTitle": "Lagre utledede eiendomsvaribler på enhetsnivå",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\neiendom_utledet.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\")",
+                                          "processStepInstance": {
+                                            "id": "62672eb0-d879-48b5-aa7c-1a1923fc1b10",
+                                            "transformableInputs": null,
+                                            "processExecutionCode": "%pyspark\\neiendom_utledet.write\\\\\\n       .format(\\\"no.ssb.gsim.spark\\\")\\\\\\n       .mode(\\\"overwrite\\\")\\\\\\n       .save(\\\"lds+gsim://f391a9ce-07f2-42d8-ace9-abbff1cede63\\\")",
+                                            "processExecutionLog": {
+                                              "logMessage": "A boat with caught fish!"
+                                            },
+                                            "transformedOutputs": {
+                                              "edges": [
+                                                {
+                                                  "node": {
+                                                    "id": "b846857a-9d9e-4b44-b82d-b28b3202a42a",
+                                                    "outputId": {
+                                                      "id": "f391a9ce-07f2-42d8-ace9-abbff1cede63",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Eiendom med utledninger"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "node": {
+                                      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
+                                      "name": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "1_1_1 Preprossessering - Skill ut skatteobjekter"
+                                        }
+                                      ],
+                                      "description": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "Split ut indata i seperate skatteobjekts filer\n\nI dette process steget tar vi inn inn-data fra Skattemelding for personer SIRIUS data.\nData’en er lagret i ett hirarkisk datasett med nestede skatteobjekter.\nFor å foreta videre processering av dataen, må de enkelte skatte objektene skilles ut, og lagres som seperate objekter for senere processering\n\nInput\nDette steget tar som input Inn-datasettet som er knyttet til Skattetatens API for skattemelding for personer.\nDette er eneste input til steget\n\nOutput\nEtter fullført processering vil det lagres seperate datasett for hvert skatte objekt knyttet til skattemeldingen."
+                                        }
+                                      ],
+                                      "technicalPackageID": "2ER3KHD5F",
+                                      "codeBlocks": [
+                                        {
+                                          "codeBlockIndex": 3,
+                                          "codeBlockTitle": "Data innlasting",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\nskattRawData = spark.read.load('gs://ssb-data-staging/data/skatt-auto-011.parquet')",
+                                          "processStepInstance": null
+                                        },
+                                        {
+                                          "codeBlockIndex": 9,
+                                          "codeBlockTitle": "Skriv skatteobjekter til Datalager",
+                                          "codeBlockType": "CODE",
+                                          "codeBlockValue": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
+                                          "processStepInstance": {
+                                            "id": "42484c58-cbec-409e-8f62-a073421d1bf3",
+                                            "transformableInputs": null,
+                                            "processExecutionCode": "%pyspark\n\neiendom.write\\\n       .format(\"no.ssb.gsim.spark\")\\\n       .mode(\"overwrite\")\\\n       .save(\"lds+gsim://0a7bd054-1c0c-4036-9981-295bb6e28540\")\n      \nkonto.write\\\n     .format(\"no.ssb.gsim.spark\")\\\n     .mode(\"overwrite\")\\\n     .save(\"lds+gsim://db7567f4-e481-4291-bf5f-685a8c6a814b\")\n     \nlty.write\\\n    .format(\"no.ssb.gsim.spark\")\\\n    .mode(\"overwrite\")\\\n    .save(\"lds+gsim://3ad4a37c-f1bc-436f-ba67-dfce980610b3\")",
+                                            "processExecutionLog": {
+                                              "logMessage": "A boat with caught fish!"
+                                            },
+                                            "transformedOutputs": {
+                                              "edges": [
+                                                {
+                                                  "node": {
+                                                    "id": "3a0971fa-4c76-4736-869d-931ab9b08be1",
+                                                    "outputId": {
+                                                      "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Konto"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "node": {
+                                                    "id": "48678959-1d36-46dc-9599-49b4a16031e1",
+                                                    "outputId": {
+                                                      "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "Eiendom"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "node": {
+                                                    "id": "65744fe7-1445-4137-8db9-92832be657a9",
+                                                    "outputId": {
+                                                      "id": "3ad4a37c-f1bc-436f-ba67-dfce980610b3",
+                                                      "name": [
+                                                        {
+                                                          "languageCode": "nb",
+                                                          "languageText": "loennOgTilsvarendeYtelser"
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "node": {
+                                      "id": "8a0453bf-15ef-487a-9f25-f6f663184214",
+                                      "name": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "1_3_1 Aggregere - Skatteobjekter til person nivå"
+                                        }
+                                      ],
+                                      "description": null,
+                                      "technicalPackageID": "2ERSYTZS4",
+                                      "codeBlocks": null
+                                    }
                                   }
-                                }
-                              ]
+                                ]
+                              }
                             }
                           },
                           {
                             "node": {
-                              "id": "8a0453bf-15ef-487a-9f25-f6f663184214",
+                              "id": "2ddd14b5-9217-4b88-9d53-a4c3bfca5076",
                               "name": [
                                 {
                                   "languageCode": "nb",
-                                  "languageText": "1_3_1 Aggregere - Skatteobjekter til person nivå"
+                                  "languageText": "Klargjøringsanalyse"
                                 }
                               ],
-                              "description": null,
-                              "technicalPackageID": "2ERSYTZS4",
-                              "codeBlocks": null
+                              "processSteps": {
+                                "edges": [
+                                  {
+                                    "node": {
+                                      "id": "21b55847-1a82-4aae-8d27-30b9ccddc42d",
+                                      "name": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "2_1 Vurdere - Dashboard"
+                                        }
+                                      ],
+                                      "description": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "Inn-dataen kommer som ett hirarkisk datasett, og trengs å inspiseres for å sjekke at strukturen er som forventet"
+                                        }
+                                      ],
+                                      "technicalPackageID": "2EQNS2JNY",
+                                      "codeBlocks": null
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "node": {
+                              "id": "417b262c-7022-435c-9911-57b34e3563cf",
+                              "name": [
+                                {
+                                  "languageCode": "nb",
+                                  "languageText": "Etablere klargjorte data"
+                                }
+                              ],
+                              "processSteps": {
+                                "edges": [
+                                  {
+                                    "node": {
+                                      "id": "12f1a40a-d7e3-4726-ae17-75e9decd46b3",
+                                      "name": [
+                                        {
+                                          "languageCode": "nb",
+                                          "languageText": "3_1 Klargjort - Lagringskontroll"
+                                        }
+                                      ],
+                                      "description": null,
+                                      "technicalPackageID": "2EQ3FNUSQ",
+                                      "codeBlocks": null
+                                    }
+                                  }
+                                ]
+                              }
                             }
                           }
                         ]
-                      }
+                      },
+                      "previousBusinessProcess": null,
+                      "processSteps": null
                     }
                   }
                 ]
