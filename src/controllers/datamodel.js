@@ -53,15 +53,17 @@ module.exports = function () {
 
   function mapProcessGraph (model) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
-    const mappedTypes = [nodeTypes.BUSINESS_PROCESS_REVERSE, nodeTypes.BUSINESS_PROCESS, nodeTypes.PROCESS_STEP,
-      nodeTypes.CODE_BLOCK]
+    const mappedTypes = [nodeTypes.BUSINESS_PROCESS, nodeTypes.BUSINESS_PROCESS_REVERSE,
+      nodeTypes.BUSINESS_PROCESS_CHILDREN, nodeTypes.PROCESS_STEP, nodeTypes.CODE_BLOCK]
     return new GraphMapper(obj, mappedTypes, nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
   }
 
   // TODO: Move code into GraphMapper
   function mapDatasetGraph (model) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
-    const processSteps = obj.businessProcesses.flatMap(bp => bp.processSteps.filter(nonEmpty('codeBlocks')))
+    const processSteps = obj.businessProcesses.concat(obj.reverseBusinessProcessParentBusinessProcess)
+      .filter(nonEmpty('processSteps'))
+      .flatMap(bp => bp.processSteps.filter(nonEmpty('codeBlocks')))
     let result = { nodes: [], edges: [] }
     processSteps.reduce((prev, obj) => {
       const inputDS = obj.codeBlocks.filter(nonEmpty('processStepInstance.transformableInputs'))
