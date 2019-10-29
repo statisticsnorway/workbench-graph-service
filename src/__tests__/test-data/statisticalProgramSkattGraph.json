@@ -107,6 +107,7 @@
     {
       "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
       "label": "1_2_1 Utlede variabler - Konto",
+      "technicalID": "2ES4X6NEZ",
       "type": "ProcessStep"
     },
     {
@@ -122,6 +123,7 @@
     {
       "id": "3d2fbe09-a052-46bc-b361-9e10706d784d",
       "label": "1_2_2 Utlede variabler - Eiendom",
+      "technicalID": "2ET7R69H3",
       "type": "ProcessStep"
     },
     {
@@ -142,6 +144,7 @@
     {
       "id": "8a0453bf-15ef-487a-9f25-f6f663184214",
       "label": "1_3_1 Aggregere - Skatteobjekter til person nivå",
+      "technicalID": "2ERSYTZS4",
       "type": "ProcessStep"
     },
     {
@@ -157,6 +160,7 @@
     {
       "id": "21b55847-1a82-4aae-8d27-30b9ccddc42d",
       "label": "2_1 Vurdere - Dashboard",
+      "technicalID": "2EQNS2JNY",
       "type": "ProcessStep"
     },
     {
@@ -167,6 +171,7 @@
     {
       "id": "12f1a40a-d7e3-4726-ae17-75e9decd46b3",
       "label": "3_1 Klargjort - Lagringskontroll",
+      "technicalID": "2EQ3FNUSQ",
       "type": "ProcessStep"
     }
   ],

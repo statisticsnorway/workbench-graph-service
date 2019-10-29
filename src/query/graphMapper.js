@@ -39,7 +39,7 @@ class GraphMapper {
 
   createNode = (obj, type) => {
     // TODO: Use language code
-    return { id: obj.id, label: obj.name ? obj.name[0].languageText : 'no name', type: type }
+    return { id: obj.id, label: obj.name ? obj.name[0].languageText : 'no name', type: type, technicalID: obj.technicalPackageID }
   }
 
   createCodeBlock = (obj) => {
