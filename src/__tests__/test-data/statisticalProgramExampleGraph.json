@@ -62,21 +62,10 @@
       "type": "BusinessProcess"
     },
     {
-      "id": "1d39e9a7-494e-4257-951f-e494f45ae691",
-      "label": "Process Step example 2",
-      "type": "ProcessStep",
-      "technicalID": null
-    },
-    {
-      "id": "1d39e9a7-494e-4257-951f-e494f45ae6911",
-      "label": "First doc",
-      "type": "CodeBlock"
-    },
-    {
       "id": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
       "label": "Process Step example 1",
-      "type": "ProcessStep",
-      "technicalID": "2ERNUDMGB"
+      "technicalID": "2ERNUDMGB",
+      "type": "ProcessStep"
     },
     {
       "id": "1eef14a0-ff0c-4f43-9416-e9c871326c821",
@@ -101,6 +90,7 @@
     {
       "id": "1d39e9a7-494e-4257-951f-e494f45ae691",
       "label": "Process Step example 2",
+      "technicalID": null,
       "type": "ProcessStep"
     },
     {
@@ -116,8 +106,8 @@
     {
       "id": "ecd92c16-8119-4106-bc65-70dcc858d1cc",
       "label": "Process Step dependency example",
-      "type": "ProcessStep",
-      "technicalID": null
+      "technicalID": null,
+      "type": "ProcessStep"
     }
   ],
   "root": {

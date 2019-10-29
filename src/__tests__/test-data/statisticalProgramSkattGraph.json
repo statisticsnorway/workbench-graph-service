@@ -92,6 +92,7 @@
     {
       "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
       "label": "1_1_1 Preprossessering - Skill ut skatteobjekter",
+      "technicalID": "2ER3KHD5F",
       "type": "ProcessStep"
     },
     {
@@ -139,6 +140,7 @@
     {
       "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
       "label": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser",
+      "technicalID": "2EPFGED2B",
       "type": "ProcessStep"
     },
     {
@@ -150,6 +152,7 @@
     {
       "id": "0c50255f-c747-4d01-9827-c0185474c3db",
       "label": "1_3_2 Aggregere - Kombiner til samlet persondatasett",
+      "technicalID": "2ES55KHQY",
       "type": "ProcessStep"
     },
     {
