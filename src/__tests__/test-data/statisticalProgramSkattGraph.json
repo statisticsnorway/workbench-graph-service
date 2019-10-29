@@ -10,11 +10,15 @@
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
-      "to": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6"
+      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c0"
     },
     {
-      "from": "157cf735-107b-4515-b2ef-79350e486673",
-      "to": "0c50255f-c747-4d01-9827-c0185474c3db"
+      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
+      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c03"
+    },
+    {
+      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
+      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c09"
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
@@ -42,19 +46,15 @@
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
-      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c0"
-    },
-    {
-      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
-      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c03"
-    },
-    {
-      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
-      "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c09"
+      "to": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6"
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "8a0453bf-15ef-487a-9f25-f6f663184214"
+    },
+    {
+      "from": "157cf735-107b-4515-b2ef-79350e486673",
+      "to": "0c50255f-c747-4d01-9827-c0185474c3db"
     },
     {
       "from": "14b01324-998b-4b83-b4e4-bd716f598651",
@@ -90,14 +90,19 @@
       "type": "BusinessProcess"
     },
     {
-      "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
-      "label": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser",
+      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
+      "label": "1_1_1 Preprossessering - Skill ut skatteobjekter",
       "type": "ProcessStep"
     },
     {
-      "id": "0c50255f-c747-4d01-9827-c0185474c3db",
-      "label": "1_3_2 Aggregere - Kombiner til samlet persondatasett",
-      "type": "ProcessStep"
+      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c03",
+      "label": "Data innlasting",
+      "type": "CodeBlock"
+    },
+    {
+      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c09",
+      "label": "Skriv skatteobjekter til Datalager",
+      "type": "CodeBlock"
     },
     {
       "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
@@ -130,23 +135,18 @@
       "type": "CodeBlock"
     },
     {
-      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0",
-      "label": "1_1_1 Preprossessering - Skill ut skatteobjekter",
+      "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
+      "label": "1_2_3 Utlede variabler - Lønn og tilsvarende ytelser",
       "type": "ProcessStep"
-    },
-    {
-      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c03",
-      "label": "Data innlasting",
-      "type": "CodeBlock"
-    },
-    {
-      "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c09",
-      "label": "Skriv skatteobjekter til Datalager",
-      "type": "CodeBlock"
     },
     {
       "id": "8a0453bf-15ef-487a-9f25-f6f663184214",
       "label": "1_3_1 Aggregere - Skatteobjekter til person nivå",
+      "type": "ProcessStep"
+    },
+    {
+      "id": "0c50255f-c747-4d01-9827-c0185474c3db",
+      "label": "1_3_2 Aggregere - Kombiner til samlet persondatasett",
       "type": "ProcessStep"
     },
     {

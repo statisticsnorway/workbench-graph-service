@@ -1,4 +1,3 @@
-
 /**
  * This function sorts an array of chained elements based on the given link function.
  * Each element in the array can have a "parent" reference to one of the other
@@ -8,34 +7,28 @@
  * @param linkFn a link function that returns the id of the previous (linked) element
  * @returns [] sorted array
  */
-function sortByChainedRefs(array, linkFn) {
+function sortByChainedRefs (array, linkFn) {
   if (!linkFn) {
     return array
   } else {
-    let sorted = []
-    array.forEach(obj => {
-      const value = linkFn(obj)
-      if (!value) {
-        const other = sorted.findIndex(o => linkFn(o) === null)
-        if (other !== -1) {
-          // Preserve same ordering as original array
-          sorted.splice(other + 1, 0, obj)
-        } else {
-          // Place object with no ref first
-          sorted.unshift(obj)
-        }
-      } else {
-        const refsTo = sorted.findIndex(o => o.id === value)
-        const refsFrom = sorted.findIndex(o => obj.id === linkFn(o))
-        if (refsTo !== -1) {
-          sorted.splice(refsTo + 1, 0, obj)
-        } else if (refsFrom !== -1) {
-          sorted.splice(refsFrom, 0, obj)
-        } else {
-          sorted.push(obj)
+    const sorted = [...array]
+    let swapped = false
+    // Based on the bubble sort algorithm
+    for (let i = 0; i < sorted.length - 1; i++) {
+      swapped = false
+      for (let j = 0; j < sorted.length - 1; j++) {
+        if (sorted[j].id !== linkFn(sorted[j + 1])) {
+          // swap arr[j] and arr[j+1]
+          let temp = sorted[j]
+          sorted[j] = sorted[j + 1]
+          sorted[j + 1] = temp
+          swapped = true
         }
       }
-    })
+      // If no two elements were swapped by inner loop, then break
+      if (!swapped)
+        break
+    }
     return sorted
   }
 }
