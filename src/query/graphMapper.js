@@ -60,7 +60,6 @@ class GraphMapper {
         const value = _.get(obj, node.path)
         if (value) {
           if (Array.isArray(value)) {
-            //value.forEach(e => {
             sortByChainedRefs(value, node.sortBy).forEach(e => {
               this.addToResult(invisible ? parent : obj, e, node.type, node.reverse, node.invisible)
             })

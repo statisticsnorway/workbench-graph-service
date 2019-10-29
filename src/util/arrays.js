@@ -1,10 +1,10 @@
 /**
  * This function sorts an array of chained elements based on the given link function.
- * Each element in the array can have a "parent" reference to one of the other
+ * Each element in the array can have a "chain" reference to one of the other
  * elements in the same array, or null if it is at the start of the chain.
  *
  * @param array the array to sort
- * @param linkFn a link function that returns the id of the previous (linked) element
+ * @param linkFn a link function that returns the id of the chained (linked) element
  * @returns [] sorted array
  */
 function sortByChainedRefs (array, linkFn) {
