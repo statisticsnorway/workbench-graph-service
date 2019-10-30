@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const sortByChainedRefs = require('../util/arrays')
 
 /*
 * List of all available node types that can be mapped
@@ -8,7 +9,7 @@ const nodeTypes = {
   BUSINESS_PROCESS_CHILDREN: { path: 'reverseBusinessProcessParentBusinessProcess', type: 'BusinessProcess' },
   BUSINESS_PROCESS_REVERSE: { path: 'previousBusinessProcess', type: 'BusinessProcess', reverse: true },
   BUSINESS_PROCESS: { path: 'businessProcesses', type: 'BusinessProcess' },
-  PROCESS_STEP: { path: 'processSteps', type: 'ProcessStep' },
+  PROCESS_STEP: { path: 'processSteps', type: 'ProcessStep', sortBy: o => _.get(o, 'previousProcessStep.id')},
   CODE_BLOCK: { path: 'codeBlocks', type: 'CodeBlock' },
   INPUT_DATASET: { path: 'processStepInstance.transformableInputs', type: 'UnitDataset', reverse: true },
   OUTPUT_DATASET: { path: 'processStepInstance.transformedOutputs', type: 'UnitDataset' }
@@ -59,7 +60,7 @@ class GraphMapper {
         const value = _.get(obj, node.path)
         if (value) {
           if (Array.isArray(value)) {
-            value.forEach(e => {
+            sortByChainedRefs(value, node.sortBy).forEach(e => {
               this.addToResult(invisible ? parent : obj, e, node.type, node.reverse, node.invisible)
             })
           } else {

@@ -46,6 +46,9 @@ module.exports = gql`
                                                                 languageCode
                                                                 languageText
                                                             }
+                                                            previousProcessStep {
+                                                                id
+                                                            }
                                                             technicalPackageID
                                                             codeBlocks {
                                                                 codeBlockIndex
@@ -116,6 +119,9 @@ module.exports = gql`
                                                         languageCode
                                                         languageText
                                                     }
+                                                    previousProcessStep {
+                                                        id
+                                                    }
                                                     technicalPackageID
                                                     codeBlocks {
                                                         codeBlockIndex
@@ -177,6 +183,9 @@ module.exports = gql`
                                                 description {
                                                     languageCode
                                                     languageText
+                                                }
+                                                previousProcessStep {
+                                                    id
                                                 }
                                                 technicalPackageID
                                                 codeBlocks {

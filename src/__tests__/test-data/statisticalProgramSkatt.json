@@ -57,6 +57,9 @@
                                           "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n* Konto\n* Lønn og tilsvarende ytelser\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
                                         }
                                       ],
+                                      "previousProcessStep": {
+                                        "id": "3d2fbe09-a052-46bc-b361-9e10706d784d"
+                                      },
                                       "technicalPackageID": "2EPFGED2B",
                                       "codeBlocks": null
                                     }
@@ -71,6 +74,9 @@
                                         }
                                       ],
                                       "description": null,
+                                      "previousProcessStep": {
+                                        "id": "8a0453bf-15ef-487a-9f25-f6f663184214"
+                                      },
                                       "technicalPackageID": "2ES55KHQY",
                                       "codeBlocks": null
                                     }
@@ -90,6 +96,9 @@
                                           "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n\nKonto\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
                                         }
                                       ],
+                                      "previousProcessStep": {
+                                        "id": "80d274e7-6b22-4f55-9ac7-76ba60c781c0"
+                                      },
                                       "technicalPackageID": "2ES4X6NEZ",
                                       "codeBlocks": [
                                         {
@@ -174,6 +183,9 @@
                                           "languageText": "I dette steget utledes nye variabler som er nødvendige for kombinasjonen av Nye Skattedata og SL modellen.\n\nInput\nDette steget tar skattevariabelene fra steg 2 som er omkodet klare til utledning.\n* Eiendom\n\nOutput\nResultatet av dette steget er Nye datasett som inneholder skattevariabler som kollonner"
                                         }
                                       ],
+                                      "previousProcessStep": {
+                                        "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a"
+                                      },
                                       "technicalPackageID": "2ET7R69H3",
                                       "codeBlocks": [
                                         {
@@ -258,6 +270,7 @@
                                           "languageText": "Split ut indata i seperate skatteobjekts filer\n\nI dette process steget tar vi inn inn-data fra Skattemelding for personer SIRIUS data.\nData’en er lagret i ett hirarkisk datasett med nestede skatteobjekter.\nFor å foreta videre processering av dataen, må de enkelte skatte objektene skilles ut, og lagres som seperate objekter for senere processering\n\nInput\nDette steget tar som input Inn-datasettet som er knyttet til Skattetatens API for skattemelding for personer.\nDette er eneste input til steget\n\nOutput\nEtter fullført processering vil det lagres seperate datasett for hvert skatte objekt knyttet til skattemeldingen."
                                         }
                                       ],
+                                      "previousProcessStep": null,
                                       "technicalPackageID": "2ER3KHD5F",
                                       "codeBlocks": [
                                         {
@@ -340,6 +353,9 @@
                                         }
                                       ],
                                       "description": null,
+                                      "previousProcessStep": {
+                                        "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6"
+                                      },
                                       "technicalPackageID": "2ERSYTZS4",
                                       "codeBlocks": null
                                     }
@@ -374,6 +390,7 @@
                                           "languageText": "Inn-dataen kommer som ett hirarkisk datasett, og trengs å inspiseres for å sjekke at strukturen er som forventet"
                                         }
                                       ],
+                                      "previousProcessStep": null,
                                       "technicalPackageID": "2EQNS2JNY",
                                       "codeBlocks": null
                                     }
@@ -403,6 +420,7 @@
                                         }
                                       ],
                                       "description": null,
+                                      "previousProcessStep": null,
                                       "technicalPackageID": "2EQ3FNUSQ",
                                       "codeBlocks": null
                                     }
