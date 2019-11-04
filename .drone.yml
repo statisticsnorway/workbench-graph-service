@@ -2,27 +2,90 @@ kind: pipeline
 name: workbench-graph-service
 
 steps:
-  - name: install-and-test
-    image: node:current-alpine
-    commands:
-      - yarn install
-      - CI=true yarn coverage
+  - name: restore-cache
+    image: homerovalle/drone-gcs-cache
+    settings:
+      pull: true
+      bucket: bip-drone-dependency-cache
+      path: bip-drone-dependency-cache/statisticsnorway/workbench-graph-service
+      json_key:
+        from_secret: gcr_credentials
+      restore: true
     when:
       event:
         - pull_request
         - push
 
+  - name: install
+    image: node:current-alpine
+    commands:
+      - yarn install
+    when:
+      event:
+        - pull_request
+        - push
+    depends_on:
+      - restore-cache
+
+  - name: rebuild-cache
+    image: homerovalle/drone-gcs-cache
+    settings:
+      pull: true
+      bucket: bip-drone-dependency-cache
+      path: bip-drone-dependency-cache/statisticsnorway/workbench-graph-service
+      json_key:
+        from_secret: gcr_credentials
+      rebuild: true
+      mount:
+        - node_modules
+    when:
+      event:
+        - pull_request
+        - push
+    depends_on:
+      - install
+
+  - name: test
+    image: node:current-alpine
+    commands:
+      - CI=true yarn coverage
+    when:
+      event:
+        - pull_request
+        - push
+    depends_on:
+      - install
+
   - name: code-analysis
     image: aosapps/drone-sonar-plugin
     settings:
-      sonar_host: https://sonarqube.prod-bip-ci.ssb.no
-#        from_secret: sonar_host -- Not implemented yet
+      sonar_host:
+        from_secret: sonar_host
       sonar_token:
         from_secret: sonar_token
     when:
       event:
         - pull_request
         - push
+    depends_on:
+      - test
+
+  - name: flush-cache
+    image: homerovalle/drone-gcs-cache
+    settings:
+      pull: true
+      bucket: bip-drone-dependency-cache
+      path: bip-drone-dependency-cache/statisticsnorway/workbench-graph-service
+      json_key:
+        from_secret: gcr_credentials
+      flush: true
+      flush_age: 14
+    when:
+      event:
+        - pull_request
+        - push
+    depends_on:
+      - rebuild-cache
 
   - name: publish-docker
     image: plugins/gcr
@@ -37,6 +100,8 @@ steps:
         - develop
       event:
         - push
+    depends_on:
+      - test
 
   - name: slack
     image: plugins/slack
@@ -52,6 +117,8 @@ steps:
         {{/success}}
     when:
       status: [ success, failure ]
+    depends_on:
+      - test
 
 trigger:
   ref:
