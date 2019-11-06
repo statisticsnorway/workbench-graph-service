@@ -51,11 +51,24 @@ module.exports = function () {
     }
   }
 
-  function mapProcessGraph (model) {
+  function mapProcessGraph (model, filter) {
     const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
     const mappedTypes = [nodeTypes.BUSINESS_PROCESS, nodeTypes.BUSINESS_PROCESS_REVERSE,
-      nodeTypes.BUSINESS_PROCESS_CHILDREN, nodeTypes.PROCESS_STEP, nodeTypes.CODE_BLOCK]
-    return new GraphMapper(obj, mappedTypes, nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
+      nodeTypes.BUSINESS_PROCESS_CHILDREN, nodeTypes.PROCESS_STEP, nodeTypes.CODE_BLOCK, nodeTypes.INPUT_DATASET,
+      nodeTypes.OUTPUT_DATASET]
+    return new GraphMapper(obj, filterMappedTypes(mappedTypes, filter), nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
+  }
+
+  function filterMappedTypes(mappedTypes, filter) {
+    if (!filter) return mappedTypes
+    const filters = filter.split(',')
+    return mappedTypes.map(mt => {
+      if (!filters.find(f => f === mt.type)) {
+        return invisible(mt)
+      } else {
+        return mt
+      }
+    })
   }
 
   // TODO: Move code into GraphMapper
@@ -120,10 +133,10 @@ module.exports = function () {
       }, { headers: getHeaders(req) })
         .then((response) => {
           if (response.data.data) {
-            if (req.query.filter === 'datasets') {
+            if (req.query.filter === nodeTypes.INPUT_DATASET.type) {
               res.status(response.status).send(mapDatasetGraph(response.data.data))
             } else {
-              res.status(response.status).send(mapProcessGraph(response.data.data))
+              res.status(response.status).send(mapProcessGraph(response.data.data, req.query.filter))
             }
           } else {
             res.status(404).send('Data not found for: ' + req.params.id)

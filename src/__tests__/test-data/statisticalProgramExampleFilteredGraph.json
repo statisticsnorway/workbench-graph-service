@@ -13,44 +13,8 @@
       "to": "1eef14a0-ff0c-4f43-9416-e9c871326c82"
     },
     {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c821"
-    },
-    {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c822"
-    },
-    {
-      "from": "b9c10b86-5867-4270-b56e-ee7439fe381e",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c822"
-    },
-    {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c822",
-      "to": "b9c10b86-5867-4270-b56e-ee7439fe381e"
-    },
-    {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c823"
-    },
-    {
-      "from": "b9c10b86-5867-4270-b56e-ee7439fe381e",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c823"
-    },
-    {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c823",
-      "to": "b9c10b86-5867-4270-b56e-ee7439fe381e"
-    },
-    {
-      "from": "1eef14a0-ff0c-4f43-9416-e9c871326c82",
-      "to": "1eef14a0-ff0c-4f43-9416-e9c871326c824"
-    },
-    {
       "from": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f",
       "to": "1d39e9a7-494e-4257-951f-e494f45ae691"
-    },
-    {
-      "from": "1d39e9a7-494e-4257-951f-e494f45ae691",
-      "to": "1d39e9a7-494e-4257-951f-e494f45ae6911"
     },
     {
       "from": "010bfa55-bd1c-4e7e-ae30-b8014c9fe623",
@@ -84,40 +48,10 @@
       "type": "ProcessStep"
     },
     {
-      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c821",
-      "label": "First doc",
-      "type": "CodeBlock"
-    },
-    {
-      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c822",
-      "label": "First code",
-      "type": "CodeBlock"
-    },
-    {
-      "id": "b9c10b86-5867-4270-b56e-ee7439fe381e",
-      "label": "PersonWithIncomeDataset",
-      "type": "UnitDataset"
-    },
-    {
-      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c823",
-      "label": "Second code",
-      "type": "CodeBlock"
-    },
-    {
-      "id": "1eef14a0-ff0c-4f43-9416-e9c871326c824",
-      "label": "Second doc",
-      "type": "CodeBlock"
-    },
-    {
       "id": "1d39e9a7-494e-4257-951f-e494f45ae691",
       "label": "Process Step example 2",
       "technicalID": null,
       "type": "ProcessStep"
-    },
-    {
-      "id": "1d39e9a7-494e-4257-951f-e494f45ae6911",
-      "label": "First doc",
-      "type": "CodeBlock"
     },
     {
       "id": "dad379da-475c-44ac-98d7-56307c10a53c",

@@ -6,6 +6,7 @@ const app = express()
 
 const statisticalProgramExample = require('../test-data/statisticalProgramExample')
 const statisticalProgramExampleGraph = require('../test-data/statisticalProgramExampleGraph')
+const statisticalProgramExampleFilteredGraph = require('../test-data/statisticalProgramExampleFilteredGraph')
 const statisticalProgramSkatt = require('../test-data/statisticalProgramSkatt')
 const statisticalProgramSkattGraph = require('../test-data/statisticalProgramSkattGraph')
 const statisticalProgramSkattDataGraph = require('../test-data/statisticalProgramSkattDataGraph')
@@ -42,7 +43,15 @@ describe('Test /api/graph endpoints', () => {
       status: 200,
       response: statisticalProgramSkatt
     })
-    await request(app).get('/api/graph/statisticalProgram/dummyId?filter=datasets').expect(200, statisticalProgramSkattDataGraph)
+    await request(app).get('/api/graph/statisticalProgram/dummyId?filter=UnitDataset').expect(200, statisticalProgramSkattDataGraph)
+  })
+
+  test('It should return a dataset graph of filtered types', async () => {
+    moxios.stubRequest('http://mock/graphql', {
+      status: 200,
+      response: statisticalProgramExample
+    })
+    await request(app).get('/api/graph/statisticalProgram/dummyId?filter=BusinessProcess,ProcessStep').expect(200, statisticalProgramExampleFilteredGraph)
   })
 
   test('It should return 404 not found', async () => {

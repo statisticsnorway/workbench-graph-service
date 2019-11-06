@@ -16,10 +16,9 @@ const nodeTypes = {
 }
 
 // Mark a node type to invisible (not shown as part of the graph)
-/* istanbul ignore next */
 const invisible = (type) => {
-  type.invisible = true
-  return type
+  // Clone the type and set invisible flag
+  return Object.assign({invisible: true}, type)
 }
 
 /*
