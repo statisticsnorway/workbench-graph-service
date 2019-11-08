@@ -21,6 +21,18 @@
       "to": "80d274e7-6b22-4f55-9ac7-76ba60c781c09"
     },
     {
+      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c09",
+      "to": "db7567f4-e481-4291-bf5f-685a8c6a814b"
+    },
+    {
+      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c09",
+      "to": "0a7bd054-1c0c-4036-9981-295bb6e28540"
+    },
+    {
+      "from": "80d274e7-6b22-4f55-9ac7-76ba60c781c09",
+      "to": "3ad4a37c-f1bc-436f-ba67-dfce980610b3"
+    },
+    {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
       "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a"
     },
@@ -29,8 +41,16 @@
       "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a4"
     },
     {
+      "from": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+      "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a4"
+    },
+    {
       "from": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
       "to": "27a4f23a-4528-4547-a7f7-d646afb22f6a14"
+    },
+    {
+      "from": "27a4f23a-4528-4547-a7f7-d646afb22f6a14",
+      "to": "f8249a67-391a-4362-97fa-3fa3ce43b943"
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
@@ -41,8 +61,16 @@
       "to": "3d2fbe09-a052-46bc-b361-9e10706d784d4"
     },
     {
+      "from": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+      "to": "3d2fbe09-a052-46bc-b361-9e10706d784d4"
+    },
+    {
       "from": "3d2fbe09-a052-46bc-b361-9e10706d784d",
       "to": "3d2fbe09-a052-46bc-b361-9e10706d784d13"
+    },
+    {
+      "from": "3d2fbe09-a052-46bc-b361-9e10706d784d13",
+      "to": "f391a9ce-07f2-42d8-ace9-abbff1cede63"
     },
     {
       "from": "157cf735-107b-4515-b2ef-79350e486673",
@@ -106,6 +134,21 @@
       "type": "CodeBlock"
     },
     {
+      "id": "db7567f4-e481-4291-bf5f-685a8c6a814b",
+      "label": "Konto",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "0a7bd054-1c0c-4036-9981-295bb6e28540",
+      "label": "Eiendom",
+      "type": "UnitDataset"
+    },
+    {
+      "id": "3ad4a37c-f1bc-436f-ba67-dfce980610b3",
+      "label": "loennOgTilsvarendeYtelser",
+      "type": "UnitDataset"
+    },
+    {
       "id": "27a4f23a-4528-4547-a7f7-d646afb22f6a",
       "label": "1_2_1 Utlede variabler - Konto",
       "technicalID": "2ES4X6NEZ",
@@ -122,6 +165,11 @@
       "type": "CodeBlock"
     },
     {
+      "id": "f8249a67-391a-4362-97fa-3fa3ce43b943",
+      "label": "Konto med utledninger",
+      "type": "UnitDataset"
+    },
+    {
       "id": "3d2fbe09-a052-46bc-b361-9e10706d784d",
       "label": "1_2_2 Utlede variabler - Eiendom",
       "technicalID": "2ET7R69H3",
@@ -136,6 +184,11 @@
       "id": "3d2fbe09-a052-46bc-b361-9e10706d784d13",
       "label": "Lagre utledede eiendomsvaribler på enhetsnivå",
       "type": "CodeBlock"
+    },
+    {
+      "id": "f391a9ce-07f2-42d8-ace9-abbff1cede63",
+      "label": "Eiendom med utledninger",
+      "type": "UnitDataset"
     },
     {
       "id": "073dc5aa-f9e4-4182-97df-9cb1ff455cd6",
