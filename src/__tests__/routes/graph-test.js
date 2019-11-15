@@ -5,6 +5,7 @@ const express = require('express')
 const app = express()
 
 const statisticalProgramExample = require('../test-data/statisticalProgramExample')
+const statisticalProgramCycleExample = require('../test-data/statisticalProgramCycleExample')
 const statisticalProgramExampleGraph = require('../test-data/statisticalProgramExampleGraph')
 const statisticalProgramExampleFilteredGraph = require('../test-data/statisticalProgramExampleFilteredGraph')
 const statisticalProgramSkatt = require('../test-data/statisticalProgramSkatt')
@@ -28,6 +29,14 @@ describe('Test /api/graph endpoints', () => {
       response: statisticalProgramExample
     })
     await request(app).get('/api/graph/statisticalProgram/dummyId').expect(200, statisticalProgramExampleGraph)
+  })
+
+  test('It should return a graph of statistical program dummy example (specified cycle)', async () => {
+    moxios.stubRequest('http://mock/graphql', {
+      status: 200,
+      response: statisticalProgramCycleExample
+    })
+    await request(app).get('/api/graph/statisticalProgram/dummyId/cycleId').expect(200, statisticalProgramExampleGraph)
   })
 
   test('It should return a graph of statistical program tax example', async () => {
