@@ -2,6 +2,7 @@ const post = require('axios').post
 const env = process.env.NODE_ENV
 const properties = require('../properties')[env]
 const getStatisticalProgramById = require('../query/getStatisticalProgramById')
+const getStatisticalProgramCycleById = require('../query/getStatisticalProgramCycleById')
 const graphqlPrinter = require('graphql/language/printer').print
 const _ = require('lodash')
 
@@ -51,12 +52,11 @@ module.exports = function () {
     }
   }
 
-  function mapProcessGraph (model, filter) {
-    const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
+  function mapProcessGraph (programCycle, filter) {
     const mappedTypes = [nodeTypes.BUSINESS_PROCESS, nodeTypes.BUSINESS_PROCESS_REVERSE,
       nodeTypes.BUSINESS_PROCESS_CHILDREN, nodeTypes.PROCESS_STEP, nodeTypes.CODE_BLOCK, nodeTypes.INPUT_DATASET,
       nodeTypes.OUTPUT_DATASET]
-    return new GraphMapper(obj, filterMappedTypes(mappedTypes, filter), nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
+    return new GraphMapper(programCycle, filterMappedTypes(mappedTypes, filter), nodeTypes.STATISTICAL_PROGRAM_CYCLE.type).graph
   }
 
   function filterMappedTypes(mappedTypes, filter) {
@@ -71,11 +71,11 @@ module.exports = function () {
     })
   }
 
-  // TODO: Move code into GraphMapper
-  function mapDatasetGraph (model) {
-    const obj = humanizeGraphQLResponse(model).StatisticalProgramById[nodeTypes.STATISTICAL_PROGRAM_CYCLE.path][0]
-    const processSteps = obj.businessProcesses
-      .concat(obj.businessProcesses.flatMap(bp => bp.reverseBusinessProcessParentBusinessProcess))
+
+// TODO: Move code into GraphMapper
+  function mapDatasetGraph (programCycle) {
+    const processSteps = programCycle.businessProcesses
+      .concat(programCycle.businessProcesses.flatMap(bp => bp.reverseBusinessProcessParentBusinessProcess))
       .filter(nonEmpty('processSteps'))
       .flatMap(bp => bp.processSteps.filter(nonEmpty('codeBlocks')))
     let result = { nodes: [], edges: [] }
@@ -124,7 +124,20 @@ module.exports = function () {
     return { from: from.id, to: to.id }
   }
 
+  function handleResponse (req, res, programCycle) {
+    if (programCycle) {
+      if (req.query.filter === nodeTypes.INPUT_DATASET.type) {
+        res.status(200).send(mapDatasetGraph(programCycle))
+      } else {
+        res.status(200).send(mapProcessGraph(programCycle, req.query.filter))
+      }
+    } else {
+      res.status(404).send('Data not found for: ' + req.params.id)
+    }
+  }
+
   return {
+
     getStatisticalProgram (req, res) {
       let url = getUrl(req.query.lds)
       return post(url + 'graphql', {
@@ -132,18 +145,21 @@ module.exports = function () {
         variables: { id: req.params.id }
       }, { headers: getHeaders(req) })
         .then((response) => {
-          if (response.data.data) {
-            if (req.query.filter === nodeTypes.INPUT_DATASET.type) {
-              res.status(response.status).send(mapDatasetGraph(response.data.data))
-            } else {
-              res.status(response.status).send(mapProcessGraph(response.data.data, req.query.filter))
-            }
-          } else {
-            res.status(404).send('Data not found for: ' + req.params.id)
-          }
+          handleResponse(req, res, _.get(humanizeGraphQLResponse(response.data.data), 'StatisticalProgramById.statisticalProgramCycles[0]'))
         })
         .catch(handleError(res))
     },
-  }
 
+    getStatisticalProgramCycle (req, res) {
+      let url = getUrl(req.query.lds)
+      return post(url + 'graphql', {
+        query: graphqlPrinter(getStatisticalProgramCycleById),
+        variables: { id: req.params.cycle }
+      }, { headers: getHeaders(req) })
+        .then((response) => {
+          handleResponse(req, res, _.get(humanizeGraphQLResponse(response.data.data), 'StatisticalProgramCycleById'))
+        })
+        .catch(handleError(res))
+    }
+  }
 }

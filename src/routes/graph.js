@@ -30,5 +30,6 @@ module.exports = () => {
   }))
 
   router.get('/statisticalProgram/:id', datamodelController.getStatisticalProgram)
+  router.get('/statisticalProgram/:id/:cycle', datamodelController.getStatisticalProgramCycle)
   return router
 }
