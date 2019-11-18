@@ -1,10 +1,6 @@
 {
   "edges": [
     {
-      "from": "8560b6c5-87ec-45df-b320-d1196c9573de",
-      "to": "010bfa55-bd1c-4e7e-ae30-b8014c9fe623"
-    },
-    {
       "from": "010bfa55-bd1c-4e7e-ae30-b8014c9fe623",
       "to": "c99cf2fa-f8db-4f85-aae6-f46e6204c84f"
     },
@@ -26,11 +22,6 @@
     }
   ],
   "nodes": [
-    {
-      "id": "8560b6c5-87ec-45df-b320-d1196c9573de",
-      "label": "Statistical Program Cycle example",
-      "type": "StatisticalProgramCycle"
-    },
     {
       "id": "010bfa55-bd1c-4e7e-ae30-b8014c9fe623",
       "label": "Business Process Parent example",
