@@ -26,10 +26,11 @@ const invisible = (type) => {
  */
 class GraphMapper {
 
-  constructor (structure, mappedTypes, type) {
+  constructor (rootNode, mappedTypes, type) {
     this.mappedTypes = mappedTypes
-    this.result = { root: { id: structure.id }, nodes: [], edges: [] }
-    this.addToResult(null, structure, type)
+    this.result = { root: { id: rootNode.id }, nodes: [], edges: [] }
+    // Set invisible = true so that the root node is not visible in the graph
+    this.addToResult(null, rootNode, type, false, true)
   }
 
   get graph () {
