@@ -1,10 +1,6 @@
 {
   "edges": [
     {
-      "from": "0bf82f62-5753-4186-8c60-ca1198873b48",
-      "to": "14b01324-998b-4b83-b4e4-bd716f598651"
-    },
-    {
       "from": "14b01324-998b-4b83-b4e4-bd716f598651",
       "to": "157cf735-107b-4515-b2ef-79350e486673"
     },
@@ -102,11 +98,6 @@
     }
   ],
   "nodes": [
-    {
-      "id": "0bf82f62-5753-4186-8c60-ca1198873b48",
-      "label": "Skattestatistikk for personer 2020",
-      "type": "StatisticalProgramCycle"
-    },
     {
       "id": "14b01324-998b-4b83-b4e4-bd716f598651",
       "label": "Klargjøring",
